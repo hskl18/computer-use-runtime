@@ -31,6 +31,13 @@ jobs:
 
       - run: pnpm exec playwright install --with-deps chromium
 
+      # One display for the whole job. The worker launches the headed browser that handoff and
+      # the console use, so wrapping only the test commands would leave the worker without one.
+      - name: Start virtual display
+        run: |
+          Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+          echo "DISPLAY=:99" >> "$GITHUB_ENV"
+
       # TypeScript, Biome, 35 unit tests, and the Next.js production build.
       - run: pnpm check
 
@@ -50,14 +57,13 @@ jobs:
           exit 1
 
       # Semantic targeting, ambiguity refusal, risky-control blocking, ownership transfer.
-      # Handoff cases need a headed browser, hence xvfb.
-      - run: xvfb-run -a pnpm test:browser
+      - run: pnpm test:browser
 
       # Replay, business outcomes, recovery, and hard failures against the recorded capability.
       # This suite starts its own fixture on port 3211.
-      - run: xvfb-run -a pnpm test:runtime
+      - run: pnpm test:runtime
 
-      - run: xvfb-run -a pnpm test:console
+      - run: pnpm test:console
 
       - name: Stop services
         if: always()
