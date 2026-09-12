@@ -1,5 +1,7 @@
 # Computer Use Runtime
 
+[![CI](https://github.com/hskl18/computer-use-runtime/actions/workflows/ci.yml/badge.svg)](https://github.com/hskl18/computer-use-runtime/actions/workflows/ci.yml)
+
 **Can a model's one-time exploration of an interface be compiled into automation that never needs the model again?**
 
 This project exists to answer that concretely rather than argue about it.
