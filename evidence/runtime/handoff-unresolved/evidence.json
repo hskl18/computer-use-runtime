@@ -15,7 +15,7 @@
     "modelEvents": 0,
     "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
     "browserHeadless": false,
-    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unresolved/.local/runs/a7ba4449-c6a8-4c07-9e58-7a925d34ee18"
+    "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unresolved/.local/runs/a7ba4449-c6a8-4c07-9e58-7a925d34ee18"
   },
   "events": [
     {

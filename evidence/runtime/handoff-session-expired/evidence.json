@@ -15,7 +15,7 @@
     "modelEvents": 0,
     "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
     "browserHeadless": false,
-    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-session-expired/.local/runs/85ba6a4e-6d42-4455-8bcd-0093336cdcad",
+    "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-session-expired/.local/runs/85ba6a4e-6d42-4455-8bcd-0093336cdcad",
     "operator": "Playwright-simulated trusted input, not a person",
     "sameBrowserContextAndPage": true,
     "sessionId": "f1d71a5d-36af-4e5a-bc24-8b3a787eeb23",

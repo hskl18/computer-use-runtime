@@ -15,7 +15,7 @@
     "modelEvents": 0,
     "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
     "browserHeadless": false,
-    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unexpected-dialog/.local/runs/a26de8b8-5454-4301-a3c6-239157a75873",
+    "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unexpected-dialog/.local/runs/a26de8b8-5454-4301-a3c6-239157a75873",
     "operator": "Playwright-simulated trusted input, not a person",
     "sameBrowserContextAndPage": true,
     "sessionId": "f78a9fb5-eb72-4807-a319-52523291e5c1",

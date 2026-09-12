@@ -14,7 +14,7 @@
     "modelEvents": 0,
     "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
     "browserHeadless": false,
-    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/cancelled/.local/runs/b4e068e7-02c3-4fc7-a452-3ec356665ebe"
+    "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/cancelled/.local/runs/b4e068e7-02c3-4fc7-a452-3ec356665ebe"
   },
   "events": [
     {

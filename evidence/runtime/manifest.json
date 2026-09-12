@@ -21,7 +21,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/success-base/.local/runs/1f5a17c3-f070-4a1f-bc69-3ddcce3ac3dc",
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/success-base/.local/runs/1f5a17c3-f070-4a1f-bc69-3ddcce3ac3dc",
       "expectedOutputsVerified": true
     },
     {
@@ -40,7 +40,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/success-union/.local/runs/6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/success-union/.local/runs/6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
       "expectedOutputsVerified": true
     },
     {
@@ -57,7 +57,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/not-found/.local/runs/45ffcc4a-41c4-4729-b3cb-fd2693364655"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/not-found/.local/runs/45ffcc4a-41c4-4729-b3cb-fd2693364655"
     },
     {
       "test": "permission-denied",
@@ -73,7 +73,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/permission-denied/.local/runs/c87a5e50-8cfa-4e7e-9627-fd7bba261e3e"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/permission-denied/.local/runs/c87a5e50-8cfa-4e7e-9627-fd7bba261e3e"
     },
     {
       "test": "validation-error",
@@ -89,7 +89,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/validation-error/.local/runs/f29ab33a-eec0-4636-8d13-c026ef03d6c9"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/validation-error/.local/runs/f29ab33a-eec0-4636-8d13-c026ef03d6c9"
     },
     {
       "test": "transient",
@@ -107,7 +107,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/transient/.local/runs/d47eb1d0-4c1b-4f9c-a7bd-f66104cc66db"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/transient/.local/runs/d47eb1d0-4c1b-4f9c-a7bd-f66104cc66db"
     },
     {
       "test": "recovery-exhausted",
@@ -125,7 +125,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/recovery-exhausted/.local/runs/e79d7acb-f256-419f-92f5-aa41c253d093"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/recovery-exhausted/.local/runs/e79d7acb-f256-419f-92f5-aa41c253d093"
     },
     {
       "test": "slow",
@@ -143,7 +143,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/slow/.local/runs/2ff3914b-021c-469a-802e-aae6976c5de1"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/slow/.local/runs/2ff3914b-021c-469a-802e-aae6976c5de1"
     },
     {
       "test": "failure-app-error",
@@ -161,7 +161,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-app-error/.local/runs/3210ae02-b208-456d-ad1b-0902ffe350f0"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-app-error/.local/runs/3210ae02-b208-456d-ad1b-0902ffe350f0"
     },
     {
       "test": "failure-duplicate-control",
@@ -179,7 +179,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-duplicate-control/.local/runs/461bbab7-c2f6-40a2-8b00-c8e5281ea817"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-duplicate-control/.local/runs/461bbab7-c2f6-40a2-8b00-c8e5281ea817"
     },
     {
       "test": "failure-session-expired",
@@ -197,7 +197,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": true,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-session-expired/.local/runs/9ac55633-6368-45dc-a992-d8f8dccb64f4"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-session-expired/.local/runs/9ac55633-6368-45dc-a992-d8f8dccb64f4"
     },
     {
       "test": "handoff-session-expired",
@@ -215,7 +215,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": false,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-session-expired/.local/runs/85ba6a4e-6d42-4455-8bcd-0093336cdcad",
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-session-expired/.local/runs/85ba6a4e-6d42-4455-8bcd-0093336cdcad",
       "operator": "Playwright-simulated trusted input, not a person",
       "sameBrowserContextAndPage": true,
       "sessionId": "f1d71a5d-36af-4e5a-bc24-8b3a787eeb23",
@@ -237,7 +237,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": false,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unexpected-dialog/.local/runs/a26de8b8-5454-4301-a3c6-239157a75873",
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unexpected-dialog/.local/runs/a26de8b8-5454-4301-a3c6-239157a75873",
       "operator": "Playwright-simulated trusted input, not a person",
       "sameBrowserContextAndPage": true,
       "sessionId": "f78a9fb5-eb72-4807-a319-52523291e5c1",
@@ -259,7 +259,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": false,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unresolved/.local/runs/a7ba4449-c6a8-4c07-9e58-7a925d34ee18"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unresolved/.local/runs/a7ba4449-c6a8-4c07-9e58-7a925d34ee18"
     },
     {
       "test": "cancelled",
@@ -276,7 +276,7 @@
       "modelEvents": 0,
       "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
       "browserHeadless": false,
-      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/cancelled/.local/runs/b4e068e7-02c3-4fc7-a452-3ec356665ebe"
+      "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/cancelled/.local/runs/b4e068e7-02c3-4fc7-a452-3ec356665ebe"
     }
   ]
 }

@@ -13,7 +13,7 @@
     "modelEvents": 0,
     "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
     "browserHeadless": true,
-    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/validation-error/.local/runs/f29ab33a-eec0-4636-8d13-c026ef03d6c9"
+    "evidenceDirectory": ".local/e2e/runtime/2026-09-12T06-10-40.028Z/validation-error/.local/runs/f29ab33a-eec0-4636-8d13-c026ef03d6c9"
   },
   "events": [
     {

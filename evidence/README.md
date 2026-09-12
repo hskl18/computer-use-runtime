@@ -37,7 +37,7 @@ They predate the no-op click rejection and are kept because revisions are immuta
 
 [Runtime manifest](runtime/manifest.json) records 15 real integration cases against the injection discovery hash.
 Each case directory contains its redacted event stream and result in `evidence.json`; available failure/intervention images are copied alongside it.
-Absolute evidence-directory fields retain their original local provenance; the exported copies are in the named case directory here.
+Evidence-directory fields are repository-relative: the recorded absolute paths were rewritten to drop the author's home directory before publication, and nothing else in those records was altered.
 
 The [session-expiry handoff](runtime/handoff-session-expired/evidence.json) and [dialog handoff](runtime/handoff-unexpected-dialog/evidence.json) record matching session IDs, the same browser context/page, captured input, and correct resumed outputs.
 Operator input was simulated by Playwright in the runtime-owned headed browser, not supplied by a person.
