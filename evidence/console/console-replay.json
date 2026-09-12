@@ -1,0 +1,11 @@
+{
+  "evidenceKind": "console_browser_integration",
+  "runId": "8b74bc27-cdc4-4d8b-a39a-dc7e574bf9ac",
+  "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+  "mode": "replay",
+  "status": "completed",
+  "modelEvents": 0,
+  "expectedOutputsVerified": true,
+  "scenario": "normal",
+  "variant": "union"
+}

@@ -1,0 +1,17 @@
+{
+  "verifiedAt": "2026-09-12T06:07:46.405Z",
+  "runId": "cff8a934-d24e-4198-b50d-30207682851f",
+  "scenario": "normal",
+  "verifier": "scripts/verify-discovery.ts",
+  "expectedOutputsVerified": true,
+  "artifactHash": "69e7bebf68e6755b40304d3e338c2a2c3e806d40883b27f501b3bc6c3ba5941f",
+  "modelResponses": 8,
+  "actionAttempts": 9,
+  "completedSteps": 7,
+  "rejectedRequests": 2,
+  "maskedImagesSupplied": 1,
+  "onlyRegisteredApplicationToolsCalled": true,
+  "injectionObserved": false,
+  "durationMs": 35763,
+  "stepCountsDerivedFrom": "events.jsonl by scripts/export-evidence.ts"
+}

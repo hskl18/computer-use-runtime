@@ -1,0 +1,53 @@
+{
+  "name": "computer-use-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Discover UI workflows with a model. Compile and replay them without one.",
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "bash scripts/dev-local.sh up",
+    "worker": "tsx apps/worker/main.ts",
+    "web": "next dev apps/web --hostname 127.0.0.1 --port 3100",
+    "build": "next build apps/web",
+    "start:web": "next start apps/web --hostname 127.0.0.1 --port 3100",
+    "cli": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "evidence:export": "tsx scripts/export-evidence.ts",
+    "test": "tsx --test packages/core/*.test.ts packages/discovery/*.test.ts",
+    "test:browser": "tsx --test e2e/browser.test.ts",
+    "test:runtime": "tsx --test e2e/runtime.test.ts",
+    "test:console": "tsx --test e2e/console.test.ts",
+    "evaluate": "pnpm test:browser && pnpm test:runtime && pnpm test:console",
+    "verify:discovery": "tsx scripts/verify-discovery.ts",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "fastify": "^5.6.2",
+    "lucide-react": "^0.577.0",
+    "next": "16.3.5",
+    "openai": "^6.0.0",
+    "playwright": "1.63.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.3.0",
+    "zod": "^4.3.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.0"
+  }
+}

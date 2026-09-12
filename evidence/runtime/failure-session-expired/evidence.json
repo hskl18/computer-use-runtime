@@ -1,0 +1,215 @@
+{
+  "summary": {
+    "test": "failure-session-expired",
+    "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+    "scenario": "session-expired",
+    "variant": "base",
+    "status": "failed",
+    "result": {
+      "status": "failure",
+      "code": "HEADLESS_HANDOFF_UNAVAILABLE",
+      "message": "Human handoff needs a headed browser. Start the run without --headless.",
+      "step": 3,
+      "screenshot": "failure.png"
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": true,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-session-expired/.local/runs/9ac55633-6368-45dc-a992-d8f8dccb64f4"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:45.595Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "session-expired",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:45.782Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "fb604bb6-5045-4135-8979-825b2d6c09b3",
+        "headless": true
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:45.782Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:45.800Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:45.824Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:45.853Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:45.925Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:45.982Z",
+      "type": "action.started",
+      "data": {
+        "step": 3,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "Open member",
+            "frame": "Member workspace"
+          },
+          "reason": "Activate the link to the member details."
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:46.037Z",
+      "type": "action.completed",
+      "data": {
+        "step": 3,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "Open member",
+            "frame": "Member workspace"
+          },
+          "reason": "Activate the link to the member details."
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:46.056Z",
+      "type": "outcome.detected",
+      "data": {
+        "code": "SESSION_EXPIRED",
+        "kind": "handoff",
+        "step": 3
+      }
+    },
+    {
+      "sequence": 11,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:46.099Z",
+      "type": "failure.observation",
+      "data": {
+        "text": "Frame: main (http://127.0.0.1:3211/sandbox/?scenario=session-expired&variant=base)\n- banner:\n  - strong: Ledger Operations\n  - text: SYNTHETIC DATA ONLY\n- iframe\n- contentinfo: Local demonstration. No real accounts, authentication, or transactions.\n\nFrame: Member workspace (http://127.0.0.1:3211/sandbox/workspace?scenario=session-expired&variant=base&screen=detail&member=[input:memberId])\n- main:\n  - heading \"Session expired\" [level=1]\n  - paragraph: A human operator must restore this synthetic session.\n  - button \"Resume session\"\n  - paragraph:\n    - link \"Return to search\":\n      - /url: /sandbox/workspace?scenario=session-expired&variant=base&screen=search&member=[input:memberId]"
+      }
+    },
+    {
+      "sequence": 12,
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "at": "2026-09-12T06:10:46.099Z",
+      "type": "run.finished",
+      "data": {
+        "status": "failed",
+        "result": {
+          "status": "failure",
+          "code": "HEADLESS_HANDOFF_UNAVAILABLE",
+          "message": "Human handoff needs a headed browser. Start the run without --headless.",
+          "step": 3,
+          "screenshot": "failure.png"
+        },
+        "modelCalls": 0,
+        "durationMs": 504
+      }
+    }
+  ]
+}

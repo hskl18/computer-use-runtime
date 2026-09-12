@@ -1,0 +1,282 @@
+{
+  "verifiedAt": "2026-09-12T06:10:53.842Z",
+  "evidenceKind": "real_runtime_integration_test",
+  "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+  "discoveryRunId": "21b2f906-460f-4a6c-88b3-70e200932aee",
+  "operator": "Playwright-simulated trusted input in the runtime-owned browser, not a person",
+  "runs": [
+    {
+      "test": "success-base",
+      "runId": "1f5a17c3-f070-4a1f-bc69-3ddcce3ac3dc",
+      "scenario": "normal",
+      "variant": "base",
+      "status": "completed",
+      "result": {
+        "status": "success",
+        "outputs": {
+          "balance": "[REDACTED]",
+          "currency": "[REDACTED]"
+        }
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/success-base/.local/runs/1f5a17c3-f070-4a1f-bc69-3ddcce3ac3dc",
+      "expectedOutputsVerified": true
+    },
+    {
+      "test": "success-union",
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "scenario": "normal",
+      "variant": "union",
+      "status": "completed",
+      "result": {
+        "status": "success",
+        "outputs": {
+          "balance": "[REDACTED]",
+          "currency": "[REDACTED]"
+        }
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/success-union/.local/runs/6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "expectedOutputsVerified": true
+    },
+    {
+      "test": "not-found",
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "scenario": "not-found",
+      "variant": "base",
+      "status": "business_outcome",
+      "result": {
+        "status": "business_outcome",
+        "code": "MEMBER_NOT_FOUND",
+        "message": "No matching member"
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/not-found/.local/runs/45ffcc4a-41c4-4729-b3cb-fd2693364655"
+    },
+    {
+      "test": "permission-denied",
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "scenario": "permission-denied",
+      "variant": "base",
+      "status": "business_outcome",
+      "result": {
+        "status": "business_outcome",
+        "code": "ACCESS_DENIED",
+        "message": "Access denied"
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/permission-denied/.local/runs/c87a5e50-8cfa-4e7e-9627-fd7bba261e3e"
+    },
+    {
+      "test": "validation-error",
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "scenario": "validation-error",
+      "variant": "base",
+      "status": "business_outcome",
+      "result": {
+        "status": "business_outcome",
+        "code": "INVALID_MEMBER_ID",
+        "message": "Invalid member ID"
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/validation-error/.local/runs/f29ab33a-eec0-4636-8d13-c026ef03d6c9"
+    },
+    {
+      "test": "transient",
+      "runId": "d47eb1d0-4c1b-4f9c-a7bd-f66104cc66db",
+      "scenario": "transient",
+      "variant": "base",
+      "status": "completed",
+      "result": {
+        "status": "success",
+        "outputs": {
+          "balance": "[REDACTED]",
+          "currency": "[REDACTED]"
+        }
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/transient/.local/runs/d47eb1d0-4c1b-4f9c-a7bd-f66104cc66db"
+    },
+    {
+      "test": "recovery-exhausted",
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "scenario": "transient",
+      "variant": "base",
+      "status": "failed",
+      "result": {
+        "status": "failure",
+        "code": "RECOVERY_EXHAUSTED",
+        "message": "The configured recovery budget was exhausted.",
+        "step": 2,
+        "screenshot": "failure.png"
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/recovery-exhausted/.local/runs/e79d7acb-f256-419f-92f5-aa41c253d093"
+    },
+    {
+      "test": "slow",
+      "runId": "2ff3914b-021c-469a-802e-aae6976c5de1",
+      "scenario": "slow",
+      "variant": "base",
+      "status": "completed",
+      "result": {
+        "status": "success",
+        "outputs": {
+          "balance": "[REDACTED]",
+          "currency": "[REDACTED]"
+        }
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/slow/.local/runs/2ff3914b-021c-469a-802e-aae6976c5de1"
+    },
+    {
+      "test": "failure-app-error",
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "scenario": "app-error",
+      "variant": "base",
+      "status": "failed",
+      "result": {
+        "status": "failure",
+        "code": "APP_ERROR",
+        "message": "Service failed",
+        "step": 2,
+        "screenshot": "failure.png"
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-app-error/.local/runs/3210ae02-b208-456d-ad1b-0902ffe350f0"
+    },
+    {
+      "test": "failure-duplicate-control",
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "scenario": "duplicate-control",
+      "variant": "base",
+      "status": "failed",
+      "result": {
+        "status": "failure",
+        "code": "TARGET_AMBIGUOUS",
+        "message": "Refusing to choose between multiple matching controls.",
+        "step": 2,
+        "screenshot": "failure.png"
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-duplicate-control/.local/runs/461bbab7-c2f6-40a2-8b00-c8e5281ea817"
+    },
+    {
+      "test": "failure-session-expired",
+      "runId": "9ac55633-6368-45dc-a992-d8f8dccb64f4",
+      "scenario": "session-expired",
+      "variant": "base",
+      "status": "failed",
+      "result": {
+        "status": "failure",
+        "code": "HEADLESS_HANDOFF_UNAVAILABLE",
+        "message": "Human handoff needs a headed browser. Start the run without --headless.",
+        "step": 3,
+        "screenshot": "failure.png"
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": true,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-session-expired/.local/runs/9ac55633-6368-45dc-a992-d8f8dccb64f4"
+    },
+    {
+      "test": "handoff-session-expired",
+      "runId": "85ba6a4e-6d42-4455-8bcd-0093336cdcad",
+      "scenario": "session-expired",
+      "variant": "base",
+      "status": "completed",
+      "result": {
+        "status": "success",
+        "outputs": {
+          "balance": "[REDACTED]",
+          "currency": "[REDACTED]"
+        }
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": false,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-session-expired/.local/runs/85ba6a4e-6d42-4455-8bcd-0093336cdcad",
+      "operator": "Playwright-simulated trusted input, not a person",
+      "sameBrowserContextAndPage": true,
+      "sessionId": "f1d71a5d-36af-4e5a-bc24-8b3a787eeb23",
+      "expectedOutputsVerified": true
+    },
+    {
+      "test": "handoff-unexpected-dialog",
+      "runId": "a26de8b8-5454-4301-a3c6-239157a75873",
+      "scenario": "unexpected-dialog",
+      "variant": "base",
+      "status": "completed",
+      "result": {
+        "status": "success",
+        "outputs": {
+          "balance": "[REDACTED]",
+          "currency": "[REDACTED]"
+        }
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": false,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unexpected-dialog/.local/runs/a26de8b8-5454-4301-a3c6-239157a75873",
+      "operator": "Playwright-simulated trusted input, not a person",
+      "sameBrowserContextAndPage": true,
+      "sessionId": "f78a9fb5-eb72-4807-a319-52523291e5c1",
+      "expectedOutputsVerified": true
+    },
+    {
+      "test": "handoff-unresolved",
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "scenario": "session-expired",
+      "variant": "base",
+      "status": "failed",
+      "result": {
+        "status": "failure",
+        "code": "HANDOFF_UNRESOLVED",
+        "message": "The operator returned control without resolving the blocked state.",
+        "step": 3,
+        "screenshot": "failure.png"
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": false,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unresolved/.local/runs/a7ba4449-c6a8-4c07-9e58-7a925d34ee18"
+    },
+    {
+      "test": "cancelled",
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "scenario": "session-expired",
+      "variant": "base",
+      "status": "cancelled",
+      "result": {
+        "status": "failure",
+        "code": "CANCELLED",
+        "message": "The operator cancelled this run.",
+        "step": 3
+      },
+      "modelEvents": 0,
+      "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+      "browserHeadless": false,
+      "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/cancelled/.local/runs/b4e068e7-02c3-4fc7-a452-3ec356665ebe"
+    }
+  ]
+}

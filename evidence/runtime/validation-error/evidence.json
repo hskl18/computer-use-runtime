@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "test": "validation-error",
+    "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+    "scenario": "validation-error",
+    "variant": "base",
+    "status": "business_outcome",
+    "result": {
+      "status": "business_outcome",
+      "code": "INVALID_MEMBER_ID",
+      "message": "Invalid member ID"
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": true,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/validation-error/.local/runs/f29ab33a-eec0-4636-8d13-c026ef03d6c9"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.006Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "validation-error",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.135Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "63bd4fd8-2337-4e88-bfe5-c4d4a531737c",
+        "headless": true
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.135Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.147Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.164Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.184Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.220Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.226Z",
+      "type": "outcome.detected",
+      "data": {
+        "code": "INVALID_MEMBER_ID",
+        "kind": "business",
+        "step": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "f29ab33a-eec0-4636-8d13-c026ef03d6c9",
+      "at": "2026-09-12T06:10:42.226Z",
+      "type": "run.finished",
+      "data": {
+        "status": "business_outcome",
+        "result": {
+          "status": "business_outcome",
+          "code": "INVALID_MEMBER_ID",
+          "message": "Invalid member ID"
+        },
+        "modelCalls": 0,
+        "durationMs": 220
+      }
+    }
+  ]
+}

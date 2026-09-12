@@ -1,0 +1,177 @@
+{
+  "summary": {
+    "test": "failure-app-error",
+    "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+    "scenario": "app-error",
+    "variant": "base",
+    "status": "failed",
+    "result": {
+      "status": "failure",
+      "code": "APP_ERROR",
+      "message": "Service failed",
+      "step": 2,
+      "screenshot": "failure.png"
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": true,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-app-error/.local/runs/3210ae02-b208-456d-ad1b-0902ffe350f0"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:44.554Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "app-error",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:44.964Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "1b11df67-40b2-4fe1-a853-51349c96e229",
+        "headless": true
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:44.964Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:45.001Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:45.031Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:45.079Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:45.140Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:45.183Z",
+      "type": "outcome.detected",
+      "data": {
+        "code": "APP_ERROR",
+        "kind": "failure",
+        "step": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:45.210Z",
+      "type": "failure.observation",
+      "data": {
+        "text": "Frame: main (http://127.0.0.1:3211/sandbox/?scenario=app-error&variant=base)\n- banner:\n  - strong: Ledger Operations\n  - text: SYNTHETIC DATA ONLY\n- iframe\n- contentinfo: Local demonstration. No real accounts, authentication, or transactions.\n\nFrame: Member workspace (http://127.0.0.1:3211/sandbox/workspace?screen=results&scenario=app-error&variant=base&member=[input:memberId])\n- main:\n  - heading \"Service failed\" [level=1]\n  - paragraph: The servicing application could not complete this request.\n  - paragraph:\n    - link \"Return to search\":\n      - /url: /sandbox/workspace?scenario=app-error&variant=base&screen=search&member=[input:memberId]"
+      }
+    },
+    {
+      "sequence": 10,
+      "runId": "3210ae02-b208-456d-ad1b-0902ffe350f0",
+      "at": "2026-09-12T06:10:45.211Z",
+      "type": "run.finished",
+      "data": {
+        "status": "failed",
+        "result": {
+          "status": "failure",
+          "code": "APP_ERROR",
+          "message": "Service failed",
+          "step": 2,
+          "screenshot": "failure.png"
+        },
+        "modelCalls": 0,
+        "durationMs": 657
+      }
+    }
+  ]
+}

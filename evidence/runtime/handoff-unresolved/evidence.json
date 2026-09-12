@@ -1,0 +1,268 @@
+{
+  "summary": {
+    "test": "handoff-unresolved",
+    "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+    "scenario": "session-expired",
+    "variant": "base",
+    "status": "failed",
+    "result": {
+      "status": "failure",
+      "code": "HANDOFF_UNRESOLVED",
+      "message": "The operator returned control without resolving the blocked state.",
+      "step": 3,
+      "screenshot": "failure.png"
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": false,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/handoff-unresolved/.local/runs/a7ba4449-c6a8-4c07-9e58-7a925d34ee18"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:51.269Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "session-expired",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:51.832Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "351b44e5-08ae-474a-a811-9c601bd05f25",
+        "headless": false
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:51.833Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:51.853Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:51.870Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:51.898Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:51.957Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:51.988Z",
+      "type": "action.started",
+      "data": {
+        "step": 3,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "Open member",
+            "frame": "Member workspace"
+          },
+          "reason": "Activate the link to the member details."
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.025Z",
+      "type": "action.completed",
+      "data": {
+        "step": 3,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "Open member",
+            "frame": "Member workspace"
+          },
+          "reason": "Activate the link to the member details."
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.048Z",
+      "type": "outcome.detected",
+      "data": {
+        "code": "SESSION_EXPIRED",
+        "kind": "handoff",
+        "step": 3
+      }
+    },
+    {
+      "sequence": 11,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.088Z",
+      "type": "intervention.requested",
+      "data": {
+        "reason": "SESSION_EXPIRED: Session expired",
+        "step": 3,
+        "sessionId": "351b44e5-08ae-474a-a811-9c601bd05f25",
+        "screenshot": "intervention.png"
+      }
+    },
+    {
+      "sequence": 12,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.089Z",
+      "type": "session.control",
+      "data": {
+        "owner": "paused",
+        "reason": "SESSION_EXPIRED: Session expired",
+        "sessionId": "351b44e5-08ae-474a-a811-9c601bd05f25"
+      }
+    },
+    {
+      "sequence": 13,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.107Z",
+      "type": "session.control",
+      "data": {
+        "owner": "human",
+        "sessionId": "351b44e5-08ae-474a-a811-9c601bd05f25"
+      }
+    },
+    {
+      "sequence": 14,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.108Z",
+      "type": "session.control",
+      "data": {
+        "owner": "automation",
+        "sessionId": "351b44e5-08ae-474a-a811-9c601bd05f25"
+      }
+    },
+    {
+      "sequence": 15,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.116Z",
+      "type": "intervention.resumed",
+      "data": {
+        "sessionId": "351b44e5-08ae-474a-a811-9c601bd05f25",
+        "observation": "Frame: main (http://127.0.0.1:3211/sandbox/?scenario=session-expired&variant=base)\n- banner:\n  - strong: Ledger Operations\n  - text: SYNTHETIC DATA ONLY\n- iframe\n- contentinfo: Local demonstration. No real accounts, authentication, or transactions.\n\nFrame: Member workspace (http://127.0.0.1:3211/sandbox/workspace?scenario=session-expired&variant=base&screen=detail&member=[input:memberId])\n- main:\n  - heading \"Session expired\" [level=1]\n  - paragraph: A human operator must restore this synthetic session.\n  - button \"Resume session\"\n  - paragraph:\n    - link \"Return to search\":\n      - /url: /sandbox/workspace?scenario=session-expired&variant=base&screen=search&member=[input:memberId]"
+      }
+    },
+    {
+      "sequence": 16,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.148Z",
+      "type": "failure.observation",
+      "data": {
+        "text": "Frame: main (http://127.0.0.1:3211/sandbox/?scenario=session-expired&variant=base)\n- banner:\n  - strong: Ledger Operations\n  - text: SYNTHETIC DATA ONLY\n- iframe\n- contentinfo: Local demonstration. No real accounts, authentication, or transactions.\n\nFrame: Member workspace (http://127.0.0.1:3211/sandbox/workspace?scenario=session-expired&variant=base&screen=detail&member=[input:memberId])\n- main:\n  - heading \"Session expired\" [level=1]\n  - paragraph: A human operator must restore this synthetic session.\n  - button \"Resume session\"\n  - paragraph:\n    - link \"Return to search\":\n      - /url: /sandbox/workspace?scenario=session-expired&variant=base&screen=search&member=[input:memberId]"
+      }
+    },
+    {
+      "sequence": 17,
+      "runId": "a7ba4449-c6a8-4c07-9e58-7a925d34ee18",
+      "at": "2026-09-12T06:10:52.148Z",
+      "type": "run.finished",
+      "data": {
+        "status": "failed",
+        "result": {
+          "status": "failure",
+          "code": "HANDOFF_UNRESOLVED",
+          "message": "The operator returned control without resolving the blocked state.",
+          "step": 3,
+          "screenshot": "failure.png"
+        },
+        "modelCalls": 0,
+        "durationMs": 879
+      }
+    }
+  ]
+}

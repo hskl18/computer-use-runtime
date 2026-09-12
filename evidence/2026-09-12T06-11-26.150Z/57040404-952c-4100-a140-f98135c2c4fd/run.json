@@ -1,0 +1,23 @@
+{
+  "id": "57040404-952c-4100-a140-f98135c2c4fd",
+  "mode": "replay",
+  "goal": "Look up the member and return the savings account balance and currency. Verify that the member ID matches the input.",
+  "status": "completed",
+  "backend": "deterministic",
+  "model": null,
+  "startedAt": "2026-09-12T06:10:28.046Z",
+  "updatedAt": "2026-09-12T06:10:28.684Z",
+  "step": 7,
+  "modelCalls": 0,
+  "scenario": "normal",
+  "variant": "union",
+  "capabilityId": "lookup-savings-balance",
+  "result": {
+    "status": "success",
+    "outputs": {
+      "balance": "[REDACTED]",
+      "currency": "[REDACTED]"
+    }
+  },
+  "durationMs": 622
+}

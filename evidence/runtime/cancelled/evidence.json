@@ -1,0 +1,246 @@
+{
+  "summary": {
+    "test": "cancelled",
+    "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+    "scenario": "session-expired",
+    "variant": "base",
+    "status": "cancelled",
+    "result": {
+      "status": "failure",
+      "code": "CANCELLED",
+      "message": "The operator cancelled this run.",
+      "step": 3
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": false,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/cancelled/.local/runs/b4e068e7-02c3-4fc7-a452-3ec356665ebe"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:52.859Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "session-expired",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.479Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "48b703d2-3886-40f2-a236-b1331a667224",
+        "headless": false
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.480Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.513Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.533Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.558Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.605Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.675Z",
+      "type": "action.started",
+      "data": {
+        "step": 3,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "Open member",
+            "frame": "Member workspace"
+          },
+          "reason": "Activate the link to the member details."
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.719Z",
+      "type": "action.completed",
+      "data": {
+        "step": 3,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "Open member",
+            "frame": "Member workspace"
+          },
+          "reason": "Activate the link to the member details."
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.730Z",
+      "type": "outcome.detected",
+      "data": {
+        "code": "SESSION_EXPIRED",
+        "kind": "handoff",
+        "step": 3
+      }
+    },
+    {
+      "sequence": 11,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.769Z",
+      "type": "intervention.requested",
+      "data": {
+        "reason": "SESSION_EXPIRED: Session expired",
+        "step": 3,
+        "sessionId": "48b703d2-3886-40f2-a236-b1331a667224",
+        "screenshot": "intervention.png"
+      }
+    },
+    {
+      "sequence": 12,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.769Z",
+      "type": "session.control",
+      "data": {
+        "owner": "paused",
+        "reason": "SESSION_EXPIRED: Session expired",
+        "sessionId": "48b703d2-3886-40f2-a236-b1331a667224"
+      }
+    },
+    {
+      "sequence": 13,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.789Z",
+      "type": "session.control",
+      "data": {
+        "owner": "closed",
+        "sessionId": "48b703d2-3886-40f2-a236-b1331a667224"
+      }
+    },
+    {
+      "sequence": 14,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.813Z",
+      "type": "failure.evidence_unavailable",
+      "data": {
+        "reason": "The browser session was already closed."
+      }
+    },
+    {
+      "sequence": 15,
+      "runId": "b4e068e7-02c3-4fc7-a452-3ec356665ebe",
+      "at": "2026-09-12T06:10:53.813Z",
+      "type": "run.finished",
+      "data": {
+        "status": "cancelled",
+        "result": {
+          "status": "failure",
+          "code": "CANCELLED",
+          "message": "The operator cancelled this run.",
+          "step": 3
+        },
+        "modelCalls": 0,
+        "durationMs": 954
+      }
+    }
+  ]
+}

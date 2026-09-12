@@ -1,0 +1,43 @@
+{
+  "allowedOrigins": ["http://127.0.0.1:3101"],
+  "pathPrefixes": ["/sandbox/"],
+  "actions": ["navigate", "click", "fill", "select", "scroll", "read", "checkpoint"],
+  "allowedClickNames": [
+    "Search",
+    "Open member",
+    "View accounts",
+    "Resume session",
+    "Dismiss notice",
+    "Return to search"
+  ],
+  "blockedControlNames": ["Submit transfer", "Delete member", "Close account"],
+  "maxSteps": 40,
+  "timeoutMs": 300000,
+  "handoffTimeoutMs": 180000,
+  "actionTimeoutMs": 5000,
+  "maxRecoveries": 2,
+  "maxToolRejections": 8,
+  "outcomes": [
+    {
+      "text": "Invalid member ID",
+      "code": "INVALID_MEMBER_ID",
+      "kind": "business",
+      "recovery": "none"
+    },
+    {
+      "text": "No matching member",
+      "code": "MEMBER_NOT_FOUND",
+      "kind": "business",
+      "recovery": "none"
+    },
+    { "text": "Access denied", "code": "ACCESS_DENIED", "kind": "business", "recovery": "none" },
+    {
+      "text": "Temporarily unavailable",
+      "code": "TRANSIENT_LOAD",
+      "kind": "retry",
+      "recovery": "reload"
+    },
+    { "text": "Session expired", "code": "SESSION_EXPIRED", "kind": "handoff", "recovery": "none" },
+    { "text": "Service failed", "code": "APP_ERROR", "kind": "failure", "recovery": "none" }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "test": "permission-denied",
+    "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+    "scenario": "permission-denied",
+    "variant": "base",
+    "status": "business_outcome",
+    "result": {
+      "status": "business_outcome",
+      "code": "ACCESS_DENIED",
+      "message": "Access denied"
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": true,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/permission-denied/.local/runs/c87a5e50-8cfa-4e7e-9627-fd7bba261e3e"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.734Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "permission-denied",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.862Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "0d41ef46-c987-4ab1-bce1-9c11a7c70b3a",
+        "headless": true
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.863Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.875Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.893Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.914Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.981Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.989Z",
+      "type": "outcome.detected",
+      "data": {
+        "code": "ACCESS_DENIED",
+        "kind": "business",
+        "step": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "c87a5e50-8cfa-4e7e-9627-fd7bba261e3e",
+      "at": "2026-09-12T06:10:41.989Z",
+      "type": "run.finished",
+      "data": {
+        "status": "business_outcome",
+        "result": {
+          "status": "business_outcome",
+          "code": "ACCESS_DENIED",
+          "message": "Access denied"
+        },
+        "modelCalls": 0,
+        "durationMs": 255
+      }
+    }
+  ]
+}

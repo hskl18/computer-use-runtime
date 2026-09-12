@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Discovery is never run here. It needs a local Codex login and spends real model quota,
+# so the recorded capability in capabilities/ is what CI replays against.
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - run: pnpm exec playwright install --with-deps chromium
+
+      # TypeScript, Biome, 35 unit tests, and the Next.js production build.
+      - run: pnpm check
+
+      # The browser and console suites drive the worker's synthetic target over HTTP, so both
+      # services have to be listening before either runs.
+      - name: Start worker and console
+        run: |
+          pnpm worker > worker.log 2>&1 & echo $! > .worker.pid
+          pnpm start:web > web.log 2>&1 & echo $! > .web.pid
+          for _ in $(seq 1 60); do
+            curl -fsS --max-time 2 http://127.0.0.1:3101/api/health >/dev/null 2>&1 \
+              && curl -fsS --max-time 5 http://127.0.0.1:3100/ >/dev/null 2>&1 && exit 0
+            sleep 2
+          done
+          echo "services did not become ready" >&2
+          tail -40 worker.log web.log >&2
+          exit 1
+
+      # Semantic targeting, ambiguity refusal, risky-control blocking, ownership transfer.
+      # Handoff cases need a headed browser, hence xvfb.
+      - run: xvfb-run -a pnpm test:browser
+
+      # Replay, business outcomes, recovery, and hard failures against the recorded capability.
+      # This suite starts its own fixture on port 3211.
+      - run: xvfb-run -a pnpm test:runtime
+
+      - run: xvfb-run -a pnpm test:console
+
+      - name: Stop services
+        if: always()
+        run: kill "$(cat .worker.pid)" "$(cat .web.pid)" 2>/dev/null || true
+
+      - name: Service logs
+        if: failure()
+        run: tail -100 worker.log web.log || true
+
+      - name: Verify evidence digests
+        run: shasum -a 256 -c evidence/files.sha256

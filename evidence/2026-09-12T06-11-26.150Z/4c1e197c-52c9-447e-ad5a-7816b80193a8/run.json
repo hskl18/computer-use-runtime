@@ -1,0 +1,22 @@
+{
+  "id": "4c1e197c-52c9-447e-ad5a-7816b80193a8",
+  "mode": "discovery",
+  "goal": "Look up the member and return the savings account balance and currency. Verify that the member ID matches the input.",
+  "status": "failed",
+  "backend": "codex",
+  "model": "gpt-6-astra",
+  "startedAt": "2026-09-12T00:52:19.343Z",
+  "updatedAt": "2026-09-12T00:52:29.578Z",
+  "step": 0,
+  "modelCalls": 3,
+  "scenario": "normal",
+  "variant": "base",
+  "result": {
+    "status": "failure",
+    "code": "DISCOVERY_INCOMPLETE",
+    "message": "The model ended without compiling a capability from a completed trajectory.",
+    "step": 0,
+    "screenshot": "failure.png"
+  },
+  "durationMs": 10219
+}

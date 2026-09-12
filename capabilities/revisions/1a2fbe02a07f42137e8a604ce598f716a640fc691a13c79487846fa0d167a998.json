@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "id": "lookup-savings-balance",
+  "version": "1.0.0",
+  "description": "Look up the member and return the savings account balance and currency. Verify that the member ID matches the input.",
+  "application": {
+    "family": "ledger-demo",
+    "version": "1",
+    "surface": "web",
+    "entryPath": "/sandbox/"
+  },
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "description": "Invocation parameter: memberId",
+      "sensitive": true
+    }
+  },
+  "outputs": {
+    "balance": {
+      "type": "string",
+      "description": "Extracted using money validation",
+      "sensitive": true
+    },
+    "currency": {
+      "type": "string",
+      "description": "Extracted using text validation",
+      "sensitive": false
+    }
+  },
+  "steps": [
+    {
+      "type": "fill",
+      "target": {
+        "by": "role",
+        "role": "textbox",
+        "name": "Member ID",
+        "frame": "Member workspace"
+      },
+      "value": {
+        "input": "memberId"
+      },
+      "reason": "Enter the supplied member ID"
+    },
+    {
+      "type": "click",
+      "target": {
+        "by": "role",
+        "role": "button",
+        "name": "Search",
+        "frame": "Member workspace"
+      },
+      "reason": "Search for the member"
+    },
+    {
+      "type": "click",
+      "target": {
+        "by": "role",
+        "role": "link",
+        "name": "Open member",
+        "frame": "Member workspace"
+      },
+      "reason": "Open the matching member record"
+    },
+    {
+      "type": "click",
+      "target": {
+        "by": "role",
+        "role": "link",
+        "name": "View accounts",
+        "frame": "Member workspace"
+      },
+      "reason": "View the member accounts"
+    },
+    {
+      "type": "checkpoint",
+      "target": {
+        "by": "tableCell",
+        "row": "Member ID",
+        "column": "Value",
+        "frame": "Member workspace"
+      },
+      "expect": "equals",
+      "value": {
+        "input": "memberId"
+      },
+      "reason": "Verify the account member ID matches the supplied member ID"
+    },
+    {
+      "type": "read",
+      "target": {
+        "by": "tableCell",
+        "row": "Savings",
+        "column": "Available balance",
+        "frame": "Member workspace"
+      },
+      "output": "balance",
+      "format": "money",
+      "sensitive": true,
+      "reason": "Read the savings account balance"
+    },
+    {
+      "type": "read",
+      "target": {
+        "by": "tableCell",
+        "row": "Savings",
+        "column": "Currency",
+        "frame": "Member workspace"
+      },
+      "output": "currency",
+      "format": "text",
+      "sensitive": false,
+      "reason": "Read the savings account currency"
+    },
+    {
+      "type": "checkpoint",
+      "target": {
+        "by": "tableCell",
+        "row": "Member ID",
+        "column": "Value",
+        "frame": "Member workspace"
+      },
+      "expect": "equals",
+      "value": {
+        "input": "memberId"
+      },
+      "reason": "Verify the account member ID matches the supplied member ID"
+    }
+  ],
+  "outcomes": [
+    {
+      "text": "No matching member",
+      "code": "MEMBER_NOT_FOUND",
+      "kind": "business",
+      "recovery": "none"
+    },
+    {
+      "text": "Access denied",
+      "code": "ACCESS_DENIED",
+      "kind": "business",
+      "recovery": "none"
+    },
+    {
+      "text": "Temporarily unavailable",
+      "code": "TRANSIENT_LOAD",
+      "kind": "retry",
+      "recovery": "reload"
+    },
+    {
+      "text": "Session expired",
+      "code": "SESSION_EXPIRED",
+      "kind": "handoff",
+      "recovery": "none"
+    },
+    {
+      "text": "Service failed",
+      "code": "APP_ERROR",
+      "kind": "failure",
+      "recovery": "none"
+    }
+  ],
+  "provenance": {
+    "runId": "26cbacd7-b992-4e31-8d56-3aedec9ff3cd",
+    "backend": "codex",
+    "model": "gpt-6-astra",
+    "recordedAt": "2026-09-12T01:00:35.198Z",
+    "artifactHash": "1a2fbe02a07f42137e8a604ce598f716a640fc691a13c79487846fa0d167a998"
+  }
+}

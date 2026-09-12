@@ -1,0 +1,177 @@
+{
+  "summary": {
+    "test": "recovery-exhausted",
+    "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+    "scenario": "transient",
+    "variant": "base",
+    "status": "failed",
+    "result": {
+      "status": "failure",
+      "code": "RECOVERY_EXHAUSTED",
+      "message": "The configured recovery budget was exhausted.",
+      "step": 2,
+      "screenshot": "failure.png"
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": true,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/recovery-exhausted/.local/runs/e79d7acb-f256-419f-92f5-aa41c253d093"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:42.794Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "transient",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:42.923Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "78fc08e9-5253-47d5-81d4-3f29c97fc2ec",
+        "headless": true
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:42.923Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:42.935Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:42.952Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:42.973Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:43.009Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:43.016Z",
+      "type": "outcome.detected",
+      "data": {
+        "code": "TRANSIENT_LOAD",
+        "kind": "retry",
+        "step": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:43.069Z",
+      "type": "failure.observation",
+      "data": {
+        "text": "Frame: main (http://127.0.0.1:3211/sandbox/?scenario=transient&variant=base)\n- banner:\n  - strong: Ledger Operations\n  - text: SYNTHETIC DATA ONLY\n- iframe\n- contentinfo: Local demonstration. No real accounts, authentication, or transactions.\n\nFrame: Member workspace (http://127.0.0.1:3211/sandbox/workspace?screen=results&scenario=transient&variant=base&member=[input:memberId])\n- main:\n  - heading \"Temporarily unavailable\" [level=1]\n  - paragraph: The member service is restarting. Reload this page to retry.\n  - paragraph:\n    - link \"Return to search\":\n      - /url: /sandbox/workspace?scenario=transient&variant=base&screen=search&member=[input:memberId]"
+      }
+    },
+    {
+      "sequence": 10,
+      "runId": "e79d7acb-f256-419f-92f5-aa41c253d093",
+      "at": "2026-09-12T06:10:43.069Z",
+      "type": "run.finished",
+      "data": {
+        "status": "failed",
+        "result": {
+          "status": "failure",
+          "code": "RECOVERY_EXHAUSTED",
+          "message": "The configured recovery budget was exhausted.",
+          "step": 2,
+          "screenshot": "failure.png"
+        },
+        "modelCalls": 0,
+        "durationMs": 275
+      }
+    }
+  ]
+}

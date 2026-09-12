@@ -1,0 +1,18 @@
+node_modules/
+.next/
+.local/
+work/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+test-results/
+playwright-report/
+apps/web/CLAUDE.md
+
+# CI service logs
+worker.log
+web.log
+.worker.pid
+.web.pid

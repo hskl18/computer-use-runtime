@@ -1,0 +1,147 @@
+{
+  "summary": {
+    "test": "failure-duplicate-control",
+    "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+    "scenario": "duplicate-control",
+    "variant": "base",
+    "status": "failed",
+    "result": {
+      "status": "failure",
+      "code": "TARGET_AMBIGUOUS",
+      "message": "Refusing to choose between multiple matching controls.",
+      "step": 2,
+      "screenshot": "failure.png"
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": true,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/failure-duplicate-control/.local/runs/461bbab7-c2f6-40a2-8b00-c8e5281ea817"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "at": "2026-09-12T06:10:45.237Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "duplicate-control",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "at": "2026-09-12T06:10:45.456Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "cf87261c-f96d-4bb2-851f-079c73121914",
+        "headless": true
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "at": "2026-09-12T06:10:45.456Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "at": "2026-09-12T06:10:45.477Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "at": "2026-09-12T06:10:45.500Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "at": "2026-09-12T06:10:45.527Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "at": "2026-09-12T06:10:45.571Z",
+      "type": "failure.observation",
+      "data": {
+        "text": "Frame: main (http://127.0.0.1:3211/sandbox/?scenario=duplicate-control&variant=base)\n- banner:\n  - strong: Ledger Operations\n  - text: SYNTHETIC DATA ONLY\n- iframe\n- contentinfo: Local demonstration. No real accounts, authentication, or transactions.\n\nFrame: Member workspace (http://127.0.0.1:3211/sandbox/workspace?scenario=duplicate-control&variant=base)\n- main:\n  - heading \"Member search\" [level=1]\n  - paragraph: Find a member to view account information.\n  - text: Member ID\n  - textbox \"Member ID\":\n    - /placeholder: Enter member ID\n    - text: [input:memberId]\n  - button \"Search\"\n  - button \"Search\"\n  - paragraph:\n    - link \"Return to search\":\n      - /url: /sandbox/workspace?scenario=duplicate-control&variant=base&screen=search&member="
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "461bbab7-c2f6-40a2-8b00-c8e5281ea817",
+      "at": "2026-09-12T06:10:45.572Z",
+      "type": "run.finished",
+      "data": {
+        "status": "failed",
+        "result": {
+          "status": "failure",
+          "code": "TARGET_AMBIGUOUS",
+          "message": "Refusing to choose between multiple matching controls.",
+          "step": 2,
+          "screenshot": "failure.png"
+        },
+        "modelCalls": 0,
+        "durationMs": 335
+      }
+    }
+  ]
+}

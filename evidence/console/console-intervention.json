@@ -1,0 +1,9 @@
+{
+  "evidenceKind": "console_browser_integration",
+  "runId": "dd9a80f4-14f1-4b72-8826-810a882c12a7",
+  "screenshotLoaded": true,
+  "takeoverVerified": true,
+  "terminalStatus": "cancelled",
+  "operator": "Console controls automated by Playwright; no human browser interaction",
+  "modelEvents": 0
+}

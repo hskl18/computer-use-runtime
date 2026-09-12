@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "test": "not-found",
+    "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+    "scenario": "not-found",
+    "variant": "base",
+    "status": "business_outcome",
+    "result": {
+      "status": "business_outcome",
+      "code": "MEMBER_NOT_FOUND",
+      "message": "No matching member"
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": true,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/not-found/.local/runs/45ffcc4a-41c4-4729-b3cb-fd2693364655"
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.451Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "not-found",
+        "variant": "base"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.593Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "5c3a6f44-8729-45f0-bae4-966c6c090c8a",
+        "headless": true
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.593Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.608Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.626Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.647Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.711Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.718Z",
+      "type": "outcome.detected",
+      "data": {
+        "code": "MEMBER_NOT_FOUND",
+        "kind": "business",
+        "step": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "45ffcc4a-41c4-4729-b3cb-fd2693364655",
+      "at": "2026-09-12T06:10:41.718Z",
+      "type": "run.finished",
+      "data": {
+        "status": "business_outcome",
+        "result": {
+          "status": "business_outcome",
+          "code": "MEMBER_NOT_FOUND",
+          "message": "No matching member"
+        },
+        "modelCalls": 0,
+        "durationMs": 267
+      }
+    }
+  ]
+}

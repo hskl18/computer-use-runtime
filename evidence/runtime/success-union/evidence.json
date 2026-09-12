@@ -1,0 +1,376 @@
+{
+  "summary": {
+    "test": "success-union",
+    "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+    "scenario": "normal",
+    "variant": "union",
+    "status": "completed",
+    "result": {
+      "status": "success",
+      "outputs": {
+        "balance": "[REDACTED]",
+        "currency": "[REDACTED]"
+      }
+    },
+    "modelEvents": 0,
+    "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+    "browserHeadless": true,
+    "evidenceDirectory": "/Users/ice/project/computer-use-runtime/.local/e2e/runtime/2026-09-12T06-10-40.028Z/success-union/.local/runs/6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+    "expectedOutputsVerified": true
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:40.659Z",
+      "type": "run.created",
+      "data": {
+        "mode": "replay",
+        "backend": "deterministic",
+        "inputNames": [
+          "memberId"
+        ],
+        "scenario": "normal",
+        "variant": "union"
+      }
+    },
+    {
+      "sequence": 2,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:40.819Z",
+      "type": "session.opened",
+      "data": {
+        "sessionId": "9e2739fe-ba34-4de0-a0f1-c9fd9500256d",
+        "headless": true
+      }
+    },
+    {
+      "sequence": 3,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:40.820Z",
+      "type": "replay.started",
+      "data": {
+        "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+        "modelAccess": "disabled"
+      }
+    },
+    {
+      "sequence": 4,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:40.845Z",
+      "type": "action.started",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:40.865Z",
+      "type": "action.completed",
+      "data": {
+        "step": 1,
+        "action": {
+          "type": "fill",
+          "target": {
+            "by": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "frame": "Member workspace"
+          },
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Enter the member ID to search."
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:40.892Z",
+      "type": "action.started",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:40.955Z",
+      "type": "action.completed",
+      "data": {
+        "step": 2,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "button",
+            "name": "Search",
+            "frame": "Member workspace"
+          },
+          "reason": "Look up the member."
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.017Z",
+      "type": "action.started",
+      "data": {
+        "step": 3,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "Open member",
+            "frame": "Member workspace"
+          },
+          "reason": "Activate the link to the member details."
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.067Z",
+      "type": "action.completed",
+      "data": {
+        "step": 3,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "Open member",
+            "frame": "Member workspace"
+          },
+          "reason": "Activate the link to the member details."
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.101Z",
+      "type": "action.started",
+      "data": {
+        "step": 4,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "View accounts",
+            "frame": "Member workspace"
+          },
+          "reason": "View the member accounts."
+        }
+      }
+    },
+    {
+      "sequence": 11,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.166Z",
+      "type": "action.completed",
+      "data": {
+        "step": 4,
+        "action": {
+          "type": "click",
+          "target": {
+            "by": "role",
+            "role": "link",
+            "name": "View accounts",
+            "frame": "Member workspace"
+          },
+          "reason": "View the member accounts."
+        }
+      }
+    },
+    {
+      "sequence": 12,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.304Z",
+      "type": "action.started",
+      "data": {
+        "step": 5,
+        "action": {
+          "type": "read",
+          "target": {
+            "by": "tableCell",
+            "row": "Savings",
+            "column": "Available balance",
+            "frame": "Member workspace"
+          },
+          "output": "balance",
+          "format": "money",
+          "sensitive": true,
+          "reason": "Read the sensitive savings account balance."
+        }
+      }
+    },
+    {
+      "sequence": 13,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.323Z",
+      "type": "action.completed",
+      "data": {
+        "step": 5,
+        "action": {
+          "type": "read",
+          "target": {
+            "by": "tableCell",
+            "row": "Savings",
+            "column": "Available balance",
+            "frame": "Member workspace"
+          },
+          "output": "balance",
+          "format": "money",
+          "sensitive": true,
+          "reason": "Read the sensitive savings account balance."
+        },
+        "output": {
+          "name": "balance",
+          "value": "[REDACTED]"
+        }
+      }
+    },
+    {
+      "sequence": 14,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.359Z",
+      "type": "action.started",
+      "data": {
+        "step": 6,
+        "action": {
+          "type": "read",
+          "target": {
+            "by": "tableCell",
+            "row": "Savings",
+            "column": "Currency",
+            "frame": "Member workspace"
+          },
+          "output": "currency",
+          "format": "text",
+          "sensitive": false,
+          "reason": "Read the savings account currency."
+        }
+      }
+    },
+    {
+      "sequence": 15,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.371Z",
+      "type": "action.completed",
+      "data": {
+        "step": 6,
+        "action": {
+          "type": "read",
+          "target": {
+            "by": "tableCell",
+            "row": "Savings",
+            "column": "Currency",
+            "frame": "Member workspace"
+          },
+          "output": "currency",
+          "format": "text",
+          "sensitive": false,
+          "reason": "Read the savings account currency."
+        },
+        "output": {
+          "name": "currency",
+          "value": "[REDACTED]"
+        }
+      }
+    },
+    {
+      "sequence": 16,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.405Z",
+      "type": "action.started",
+      "data": {
+        "step": 7,
+        "action": {
+          "type": "checkpoint",
+          "target": {
+            "by": "tableCell",
+            "row": "Member ID",
+            "column": "Value",
+            "frame": "Member workspace"
+          },
+          "expect": "equals",
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Verify the account member ID matches the input."
+        }
+      }
+    },
+    {
+      "sequence": 17,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.413Z",
+      "type": "action.completed",
+      "data": {
+        "step": 7,
+        "action": {
+          "type": "checkpoint",
+          "target": {
+            "by": "tableCell",
+            "row": "Member ID",
+            "column": "Value",
+            "frame": "Member workspace"
+          },
+          "expect": "equals",
+          "value": {
+            "input": "memberId"
+          },
+          "reason": "Verify the account member ID matches the input."
+        }
+      }
+    },
+    {
+      "sequence": 18,
+      "runId": "6fa49809-1982-499f-bc5b-a09e3ce4f7ab",
+      "at": "2026-09-12T06:10:41.430Z",
+      "type": "run.finished",
+      "data": {
+        "status": "completed",
+        "result": {
+          "status": "success",
+          "outputs": {
+            "balance": "[REDACTED]",
+            "currency": "[REDACTED]"
+          }
+        },
+        "modelCalls": 0,
+        "durationMs": 770
+      }
+    }
+  ]
+}

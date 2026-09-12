@@ -1,0 +1,15 @@
+{
+  "verifiedAt": "2026-09-12T06:10:28.859Z",
+  "runId": "57040404-952c-4100-a140-f98135c2c4fd",
+  "verifier": "scripts/verify-replay.ts",
+  "cliExitCode": 0,
+  "artifactHash": "d2395f10cedb0d0d7735df078cb712d48a0c8c17c1ded75a1fd2129b71dea8aa",
+  "variant": "union",
+  "expectedOutputsVerified": true,
+  "modelResponses": 0,
+  "modelOrProviderEvents": 0,
+  "completedSteps": 7,
+  "durationMs": 622,
+  "actionAttempts": 7,
+  "stepCountsDerivedFrom": "events.jsonl by scripts/export-evidence.ts"
+}
