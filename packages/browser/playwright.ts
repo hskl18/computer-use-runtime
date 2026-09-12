@@ -159,8 +159,7 @@ export class BrowserSurface implements Surface {
     };
   }
 
-  // Lets discovery refuse a click that leaves the application unchanged, so a compiled step is
-  // never a no-op that only looks like it worked.
+  // Compared only in memory; a changed signature is not proof of business success.
   async signature(): Promise<string> {
     const frames = await this.snapshotFrames();
     return createHash("sha256")

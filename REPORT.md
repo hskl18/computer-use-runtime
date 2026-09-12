@@ -25,9 +25,10 @@ Application errors, ambiguous targets, policy violations, unresolved handoff, an
 Failure paths retain redacted observations and masked images when capture is possible.
 Raw typed outputs are checked locally against independent fixture expectations, returned temporarily to the caller, and masked in persistence.
 The two final discoveries each made nine action attempts: seven completed and two rejected before compilation.
-A click that leaves the accessibility snapshot and frame URLs unchanged is rejected during discovery, so a no-op never becomes a recorded step.
+Discovery waits within the action timeout for a click to change frame URLs or accessibility snapshots, without repeating the click.
+This is a bounded progress heuristic, not proof of business effect; uncertain outcomes prompt observation or handoff, and the final checkpoint verifies task success.
 Their exact-revision CLI replays used different inputs, returned the expected outputs, and emitted zero model/provider events.
-The local gates passed 35 core/provider, 9 browser, 15 runtime, and 4 console tests plus TypeScript, lint, and production build.
+The local gates pass 39 core/provider, 9 browser, 15 runtime, and 4 console tests plus TypeScript, lint, and production build.
 See the [evidence index](evidence/README.md) for run IDs and exact hashes.
 
 # Heterogeneity & multi-tenant

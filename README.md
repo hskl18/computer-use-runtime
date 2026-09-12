@@ -35,7 +35,7 @@ flowchart LR
 
   subgraph Discovery["Once, with the model"]
     Loop["observe, decide, act"]
-    Loop --> Gate{"Allowed by policy<br/>and changed the app?"}
+    Loop --> Gate{"Allowed by policy<br/>and observed progress?"}
     Gate -->|"no, and not recorded"| Loop
     Gate -->|"yes, recorded"| Compile["complete:<br/>compile and validate"]
   end
@@ -51,7 +51,11 @@ flowchart LR
   Operator -.->|control returned| Steps
 ```
 
-A rejected action is never recorded, so a step that silently did nothing cannot reach the artifact.
+A rejected action is not compiled.
+For clicks, discovery waits up to the action timeout for a change in frame URLs or accessibility snapshots, without clicking again.
+This is a progress heuristic: unrelated updates can change the signature, while some valid actions have no observable change.
+An uncertain click is reported as already executed, and the model is directed to observe or request handoff rather than retry blindly.
+The final checkpoint remains responsible for verifying task success.
 
 ## Start locally
 
@@ -211,9 +215,9 @@ pnpm exec tsx scripts/verify-replay.ts --revision 69e7bebf68e6755b40304d3e338c2a
 pnpm evidence:export DISCOVERY_RUN_ID REPLAY_RUN_ID
 ```
 
-`pnpm check` runs TypeScript, Biome, 35 core/provider tests, and the Next.js production build.
+`pnpm check` runs TypeScript, Biome, 39 core/provider tests, and the Next.js production build.
 `pnpm evaluate` runs 9 browser, 15 runtime, and 4 console tests.
-All three suites need the real discovered capability that ships in `capabilities/`.
+The runtime and console suites use the real discovered capability that ships in `capabilities/`.
 The runtime suite starts its own fixture on port 3211; the browser and console suites drive the worker's synthetic target over HTTP, so `pnpm dev` must be running for them.
 Model calls are confined to the explicit discovery commands.
 The exporter reads the local database without modifying it and exports persisted redacted records, referenced artifact revisions, available masked screenshots, and a file digest manifest.
@@ -225,4 +229,5 @@ See [the evidence contract](evidence/README.md) and [acceptance checklist](docs/
 Project code is MIT-licensed.
 The runtime reuses Playwright, Codex App Server, Next.js, React, Fastify, Zod, and the OpenAI SDK instead of building browser, model transport, or UI infrastructure from scratch.
 See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for upstream licenses and [sources](docs/sources.md) for design references.
-No remote repository, commit, deployment, or public release has been created for this implementation.
+Source and recorded evidence are published at [hskl18/computer-use-runtime](https://github.com/hskl18/computer-use-runtime).
+The application has not been deployed; it runs locally.

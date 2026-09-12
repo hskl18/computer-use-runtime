@@ -85,6 +85,9 @@ Arbitrary browser evaluation is absent from the model tool contract.
 The adapter uses its own trusted code for observations and event capture.
 
 Every automated action is checked against policy and current ownership.
+During discovery, a click is followed by a bounded wait for a changed frame URL or accessibility snapshot.
+Cancellation and policy failures terminate that wait; it never re-executes the action.
+No observed change before the deadline produces uncertain-effect feedback, while the final checkpoint remains the success criterion.
 Browser requests are restricted to the configured local origin and `/sandbox/` path prefix.
 Popups are closed, downloads are disabled, service workers are blocked, and credential fields are rejected.
 Exact click names must be allowed, and blocked control names take precedence.

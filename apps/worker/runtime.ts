@@ -26,6 +26,7 @@ import {
   type ToolResult,
   toolSchemas,
 } from "../../packages/discovery/backend.ts";
+import { waitForSurfaceChange } from "../../packages/discovery/progress.ts";
 
 class Outcome extends Error {
   constructor(readonly result: Result) {
@@ -408,19 +409,25 @@ export class Runtime {
     if (outcome) throw new Outcome(outcome);
     active.run.step++;
     emit("action.started", { step: active.run.step, action });
-    // Discovery compiles the actions the model took, so a click that changes nothing must not
-    // become a recorded step that only appears to work on replay.
+    // Observable change is a progress hint; the final checkpoint verifies task success.
     const checkEffect = active.request.mode === "discovery" && action.type === "click";
     const before = checkEffect ? await active.surface.signature() : "";
-    const value = await rejectable(async () => {
-      const output = await active.surface.execute(action, active.request.inputs);
-      if (checkEffect && (await active.surface.signature()) === before)
-        throw new RuntimeError(
+    const value = await rejectable(() => active.surface.execute(action, active.request.inputs));
+    if (
+      checkEffect &&
+      !(await waitForSurfaceChange(
+        active.surface,
+        before,
+        this.policy.actionTimeoutMs,
+        active.session.abort.signal,
+      ))
+    )
+      throw new ToolRejected(
+        new RuntimeError(
           "ACTION_WITHOUT_EFFECT",
-          "That click left the application unchanged. Target the control that performs the action.",
-        );
-      return output;
-    });
+          "No observable page change was detected within the action timeout. The click was executed; do not retry it blindly. Observe the page or request handoff if its outcome is uncertain.",
+        ),
+      );
     active.session.assertAutomation();
     if (action.type === "read" && value !== undefined) active.outputs[action.output] = value;
     active.actions.push(action);

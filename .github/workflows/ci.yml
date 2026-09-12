@@ -38,7 +38,7 @@ jobs:
           Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
           echo "DISPLAY=:99" >> "$GITHUB_ENV"
 
-      # TypeScript, Biome, 35 unit tests, and the Next.js production build.
+      # TypeScript, Biome, core/provider regression tests, and the Next.js production build.
       - run: pnpm check
 
       # The browser and console suites drive the worker's synthetic target over HTTP, so both

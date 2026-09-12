@@ -4,7 +4,7 @@ Local verification completed on 2026-09-11 America/Los_Angeles (2026-09-12 UTC).
 Tests run on the project's synthetic application using installed Chromium.
 No real account or external site was operated.
 
-## Acceptance gates
+## Published baseline acceptance gates
 
 | Gate | Observed evidence | Result |
 | --- | --- | --- |
@@ -12,7 +12,7 @@ No real account or external site was operated.
 | Browser surface | `pnpm test:browser`: 9 tests, semantic targeting, delayed iframe navigation, risky control refusal, ownership | Passed |
 | Runtime | `pnpm test:runtime`: 15 cases using the exact real discovery revision | Passed |
 | Console | `pnpm test:console`: 4 desktop/mobile tests, raw-output replay, historical revision, failure image, take/cancel | Passed |
-| Model discovery | Normal and prompt-injection runs, each with 8 completed actions, 8 model responses, 1 rejected action, 1 masked image supplied | Passed |
+| Model discovery | Normal and prompt-injection runs, each with 7 completed actions, 8 model responses, 2 rejected actions, 1 masked image supplied | Passed |
 | Model boundary | ChatGPT authentication, gpt-6-astra, empty inherited MCP inventory, no native environment; registered application calls only | Observed in both final discoveries |
 | Exact replay | Both final discovery hashes replayed through the CLI using different inputs; expected raw outputs independently asserted | Passed, zero model/provider events |
 | Layout variation | Same normal-discovery hash replays reversed rows/columns; injection-discovery hash also replays the union layout | Passed |
@@ -62,5 +62,21 @@ The subscription path was verified in this environment; no live direct API call 
 
 ## Release boundary
 
-Nothing here has been deployed or published.
+Source and recorded evidence are public at [hskl18/computer-use-runtime](https://github.com/hskl18/computer-use-runtime).
+The application has not been deployed.
+The first public commit, `06dbf62`, passed [hosted CI](https://github.com/hskl18/computer-use-runtime/actions/runs/34681345575) with 63 tests; [CI status for every later commit](https://github.com/hskl18/computer-use-runtime/actions/workflows/ci.yml) is recorded per run.
+The path cleanup in that commit removed home-directory prefixes from the current evidence files only.
+Earlier commits still contain those prefixes; Git history was not rewritten.
 Tenant isolation, real-bank compatibility, comparative model superiority, and future subscription entitlement are not inferred from these checks.
+
+## Bounded click observation follow-up
+
+Local follow-up verification on 2026-09-12 passed `pnpm check` (39 core/provider tests, TypeScript, Biome, and build) and `pnpm evaluate` (9 browser, 15 runtime, and 4 console tests): 67 tests in total.
+All 59 published evidence-file checksums still match.
+No new live model discovery was run for this patch.
+
+The four progress regression checks exercise a delayed update, an unchanged page reaching its deadline, cancellation during the wait, and a policy failure during observation.
+The wait reuses the configured action timeout and never repeats the click.
+Page-signature changes are only an observation heuristic; they do not prove business success or support blind retry after an uncertain effect.
+Original capability revisions, event logs, screenshots, and evidence digests remain unchanged.
+The recorded discovery runs predate this follow-up; they are not presented as new model validation of the changed wait.
