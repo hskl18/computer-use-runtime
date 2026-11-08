@@ -2,15 +2,59 @@
 
 [![CI](https://github.com/hskl18/computer-use-runtime/actions/workflows/ci.yml/badge.svg)](https://github.com/hskl18/computer-use-runtime/actions/workflows/ci.yml)
 
-**Can a model's one-time exploration of an interface be compiled into automation that never needs the model again?**
+A model discovers a workflow once in a UI that has no API; the runtime compiles what it did into a typed capability and replays it with zero model calls.
 
-This project exists to answer that concretely rather than argue about it.
-The setting is the one that makes the question matter: back-office software with no API, where the only way in is to drive the screen the way a human operator would.
+**Status: alpha, v0.2.0.** A local, single-user reference implementation against a synthetic back-office UI.
+It has not been deployed, and the capability format, CLI, and local API may change before 1.0.
 
-A model is given a goal and a live interface and explores it through four controlled tools.
-The run that succeeds is compiled into a typed, versioned capability.
-Every invocation after that replays the capability deterministically, with no model in the decision loop.
+## Why
+
+Back-office software often has no API, so the only way in is to drive the screen the way a human operator would.
+Putting a model in that loop on every run makes each run slow, metered, and different from the last.
+This project tests a narrower idea: the model explores once, and every later run replays the compiled result deterministically.
+
+A model gets a goal and a live interface and explores it through four controlled tools.
+The run that succeeds is compiled into a typed, versioned capability with a SHA-256 revision.
 The subject application is a synthetic banking workspace built to be awkward in the ways legacy software is awkward: an iframe, table-based layouts, no test IDs, and injectable runtime failures.
+
+## Result
+
+Recorded on 2026-09-12 with gpt-6-astra through Codex CLI 0.153.4, against the synthetic UI in this repository.
+Run IDs, assertions, and file digests are in the [evidence index](evidence/README.md).
+
+| Run | Layout | Model responses | Actions | Outcome |
+| --- | --- | ---: | --- | --- |
+| Discovery, member M1001 | base | 8 | 9 attempted, 7 compiled | Capability `69e7bebf…` |
+| Replay of `69e7bebf…`, member M2002 | base | 0 | 7 | Expected balance and currency |
+| Replay of `69e7bebf…`, member M3003 | rows and columns reversed | 0 | 7 | Expected balance and currency |
+| Prompt-injection discovery, member M2002 | base | 8 | 9 attempted, 7 compiled | Only registered application tools called |
+| Replay of its capability, member M3003 | rows and columns reversed | 0 | 7 | Expected balance and currency |
+
+The two discoveries took 36 s and 41 s; each replay took under 1 s and emitted zero model or provider events.
+Each discovery's two rejected actions, an ambiguous table cell and a click that left the page unchanged, were not compiled.
+CI runs 67 tests on every commit: 39 core/provider, 9 browser, 15 runtime, and 4 console.
+Operator handoffs in the evidence were simulated by Playwright in a real headed browser, not performed by a person.
+
+The design decisions, and the failures found and fixed along the way, are in [REPORT.md](REPORT.md).
+
+## Try it without a model
+
+Requires Node.js 24 or later and pnpm 11.
+
+```bash
+pnpm install --frozen-lockfile && pnpm exec playwright install chromium && pnpm test:runtime
+```
+
+This replays the committed capability through real Chromium in 15 cases: changed inputs on both layouts, business outcomes, recovery, hard failures, and simulated handoffs.
+It starts its own fixture, needs no model or login, and opens headed Chromium windows for the four tests that pause for an operator.
+
+## Non-goals
+
+- Production banking software: there are no real accounts, bank writes, or real authentication.
+- A model benchmark: the evidence is selected acceptance runs on one synthetic application family, not a success-rate study or a comparison between models.
+- Broad prompt-injection robustness: one live injection run is recorded.
+- Tenant isolation, distributed scheduling, remote operator streaming, and desktop or terminal control.
+- A hosted service: it runs locally and binds to 127.0.0.1.
 
 ## What came out of it
 
@@ -69,6 +113,8 @@ pnpm exec playwright install chromium
 pnpm dev
 pnpm cli doctor
 ```
+
+`pnpm cli doctor` reports Node.js, the Codex CLI and its login, whether Playwright's Chromium build is installed, and worker health.
 
 The console runs at `http://127.0.0.1:3100`.
 The worker and synthetic target run at `http://127.0.0.1:3101`.
@@ -165,7 +211,9 @@ flowchart TD
 | `risky` | Block attempts to activate the transfer control |
 | `prompt-injection` | Treat the imported note as untrusted content |
 
-The local test suites cover these branches; the injection scenario also has a real model run.
+The fixture defines these 12 scenarios; the local suites exercise targeting, business outcomes, recovery, failures, and simulated operator handoffs.
+Prompt injection is covered by one recorded live discovery run, not by the local test suites.
+That run observed the injected note, completed the task, and called only registered application tools; it does not establish broad injection robustness.
 Use `--scenario NAME` with discovery or replay.
 Handoff requires a headed browser, which is the default.
 
@@ -198,8 +246,6 @@ It uses the same controlled tools and does not silently replace the subscription
 The subscription path is what the recorded runs actually used; the direct API path exists so the same tools can run on metered API credentials.
 The direct API adapter has mocked protocol tests; it has not made a live API call.
 
-This is a local, single-user reference implementation.
-It is not a production bank integration, tenant isolation service, desktop automation adapter, or proof of one model's superiority.
 The UI target is synthetic and the recorded model discovery is real.
 
 ## Verification and evidence

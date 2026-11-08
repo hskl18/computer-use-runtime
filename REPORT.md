@@ -68,6 +68,36 @@ This is one observed case, not a general prompt-injection guarantee.
 All structured reads are masked for model responses and persistence; text and image masks are fixture-specific.
 The local API and trusted operator model are unsuitable as production authentication or authorization.
 
+# Failures found and fixed
+
+**Clicks that changed nothing were compiled into capabilities.**
+Two of the three earlier eight-step revisions in `capabilities/revisions/` click the `Open member` table cell and then the `Open member` link.
+Discovery now rejects a click that leaves the page unchanged and tells the model so, and both final discoveries compiled seven steps without the cell click.
+The earlier revisions stay in place because revisions are immutable once written.
+
+**The no-op check itself misread slow pages.**
+It first compared the page signature once, immediately after the click, so an update that arrived asynchronously looked like a no-op.
+Commit `5f0536d` polls within the action timeout instead, never repeats the click, and reports an uncertain outcome as already executed so the model observes or requests handoff rather than retrying.
+Four regression tests in `packages/discovery/progress.test.ts` cover a delayed update, an unchanged page, cancellation, and a policy failure during the wait.
+The recorded discoveries predate this change and are not presented as validating it.
+
+**The model runtime inherited tools the runtime never registered.**
+A developer's own Codex home kept plugin MCP servers (`node_repl`, `cua_repl`, `codex_apps`) connected even with `-c mcp_servers={}` and `-c plugins={}`.
+Discovery now runs from an isolated `CODEX_HOME`, and the preflight lists MCP servers and refuses to start a turn if any is attached (`packages/discovery/codex-app-server.ts`).
+The first acceptance run (`4c1e197c`) failed with `DISCOVERY_INCOMPLETE` before any UI step because the Codex tool host that Astra needs to dispatch application tools was disabled; it is kept in the evidence as counterevidence.
+
+**CI ran the headed handoff tests without a display.**
+Only the test commands were wrapped in a virtual display, but the worker launches the headed browser that handoff and the console use.
+Commit `19e5699` starts one Xvfb display for the whole job.
+
+**Published evidence contained the author's home directory.**
+Evidence provenance fields were absolute paths.
+Commit `06dbf62` made them repository-relative without changing any recorded result; earlier commits still contain the prefixes because Git history was not rewritten.
+
+**`doctor` passed while every replay was bound to fail.**
+On a machine whose shared Playwright cache held other Chromium builds but not the one Playwright 1.63 expects, each replay failed at step 0 with a generic `EXECUTION_FAILED`, and the launch error never reached the run record.
+Commit `44b4f14` makes `pnpm cli doctor` report whether the Chromium build that Playwright expects is installed.
+
 # Cuts
 
 What exists is a verified local implementation with real model trajectories and model-free replay evidence.

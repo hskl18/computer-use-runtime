@@ -197,7 +197,7 @@ export class CodexBackend implements DiscoveryBackend {
     host: DiscoveryHost,
   ): Promise<{ started: ThreadStarted; inventory: McpInventory }> {
     await rpc.request("initialize", {
-      clientInfo: { name: "computer_use_runtime", version: "0.1.0" },
+      clientInfo: { name: "computer_use_runtime", version: "0.2.0" },
       capabilities: { experimentalApi: true },
     });
     rpc.send({ method: "initialized" });
