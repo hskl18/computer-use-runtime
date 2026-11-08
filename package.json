@@ -1,6 +1,6 @@
 {
   "name": "computer-use-runtime",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Discover UI workflows with a model. Compile and replay them without one.",
   "type": "module",
