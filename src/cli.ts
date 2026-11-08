@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { parseArgs } from "node:util";
 
 const { values, positionals } = parseArgs({
@@ -38,6 +39,8 @@ async function main(): Promise<void> {
   }
   if (command === "doctor") {
     const binary = process.env.CODEX_BIN ?? "codex";
+    // Without this, a missing Playwright build surfaces only as a generic EXECUTION_FAILED at step 0.
+    const { chromium } = await import("playwright");
     console.log(
       JSON.stringify(
         {
@@ -48,6 +51,9 @@ async function main(): Promise<void> {
           codexLogin:
             spawnSync(binary, ["login", "status"], { encoding: "utf8" }).stderr?.trim() ||
             "Check codex login status",
+          chromium: existsSync(chromium.executablePath())
+            ? "installed"
+            : "missing; run pnpm exec playwright install chromium",
           worker: await request("/health"),
           discoveryVerified: "See saved evidence; login is not a successful model run.",
         },
