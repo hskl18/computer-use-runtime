@@ -44,3 +44,11 @@ The retained initial discovery failure and the rejected requests in successful d
 The selection is an acceptance evidence set, not a complete benchmark sample.
 Handoff inputs were simulated by Playwright in a real retained browser context and page.
 No real person, external account, direct API billing, cross-tenant deployment, or model-superiority claim is established.
+
+## 2026-11-09 re-run
+
+Reviewed locally on 2026-11-09 by the coding agent, under the same limits as above.
+Both new capability files were recomputed with `artifactHash` from `packages/core/compiler.ts` and matched their file names and recorded hashes, and every exported copy is byte-identical to its file in `capabilities/revisions/`.
+The JSON and JSONL files in the new export contain none of the three synthetic member IDs or fixture balances; persisted outputs read `[REDACTED]`, and no absolute local path or credential pattern appears.
+This export holds no PNG files.
+`pnpm check` passed TypeScript, Biome on 52 files, 39 core/provider tests, and the Next.js production build, and the browser, runtime, and console suites passed 9/9, 15/15, and 4/4 against the same code.

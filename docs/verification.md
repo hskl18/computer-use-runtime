@@ -79,4 +79,4 @@ The four progress regression checks exercise a delayed update, an unchanged page
 The wait reuses the configured action timeout and never repeats the click.
 Page-signature changes are only an observation heuristic; they do not prove business success or support blind retry after an uncertain effect.
 Original capability revisions, event logs, screenshots, and evidence digests remain unchanged.
-The recorded discovery runs predate this follow-up; they are not presented as new model validation of the changed wait.
+The September discovery runs predate this follow-up; the 2026-11-09 re-runs used it and completed, which shows it does not break a normal discovery, not that it handles a slow page.

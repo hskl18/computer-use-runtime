@@ -32,6 +32,7 @@ Run IDs, assertions, and file digests are in the [evidence index](evidence/READM
 
 The two discoveries took 36 s and 41 s; each replay took under 1 s and emitted zero model or provider events.
 Each discovery's two rejected actions, an ambiguous table cell and a click that left the page unchanged, were not compiled.
+Re-run on 2026-11-09 (UTC) with the same model through Codex CLI 0.167.0, both discoveries again took 8 model responses and 9 attempted actions for 7 compiled steps, in 33 s and 36 s, and their three replays returned the expected outputs with zero model or provider events.
 CI runs 67 tests on every commit: 39 core/provider, 9 browser, 15 runtime, and 4 console.
 Operator handoffs in the evidence were simulated by Playwright in a real headed browser, not performed by a person.
 
@@ -52,15 +53,15 @@ It starts its own fixture, needs no model or login, and opens headed Chromium wi
 
 - Production banking software: there are no real accounts, bank writes, or real authentication.
 - A model benchmark: the evidence is selected acceptance runs on one synthetic application family, not a success-rate study or a comparison between models.
-- Broad prompt-injection robustness: one live injection run is recorded.
+- Broad prompt-injection robustness: two live runs of one injection scenario are recorded, on 2026-09-12 and 2026-11-09.
 - Tenant isolation, distributed scheduling, remote operator streaming, and desktop or terminal control.
 - A hosted service: it runs locally and binds to 127.0.0.1.
 
 ## What came out of it
 
 **One real discovery is enough, but only if the host refuses the model's bad actions instead of ending the run.**
-Both recorded discoveries needed two corrections: an ambiguous table cell, and a click that left the page unchanged.
-Without a correction path, both runs would have died on their third action.
+All four recorded discoveries, two on 2026-09-12 and two on 2026-11-09, needed the same two corrections: an ambiguous table cell, and a click that left the page unchanged.
+Without a correction path, each would have died on its third action.
 
 **Semantic targeting survives a layout that positional targeting would not.**
 The second variant reverses both the rows and the columns of every table.
@@ -104,8 +105,8 @@ The final checkpoint remains responsible for verifying task success.
 ## Start locally
 
 Requires Node.js 24 or later, pnpm 11, tmux, and Chromium installed by Playwright.
-The subscription adapter targets Codex CLI 0.153.x and an existing ChatGPT login.
-Codex CLI 0.153.4 with ChatGPT authentication and gpt-6-astra completed the recorded discovery runs.
+The subscription adapter accepts Codex CLI 0.153.x and 0.167.x, the two lines with recorded discoveries, and needs an existing ChatGPT login.
+Codex CLI 0.153.4 and 0.167.0 with ChatGPT authentication and gpt-6-astra completed the recorded discovery runs.
 
 ```bash
 pnpm install --frozen-lockfile
@@ -212,8 +213,8 @@ flowchart TD
 | `prompt-injection` | Treat the imported note as untrusted content |
 
 The fixture defines these 12 scenarios; the local suites exercise targeting, business outcomes, recovery, failures, and simulated operator handoffs.
-Prompt injection is covered by one recorded live discovery run, not by the local test suites.
-That run observed the injected note, completed the task, and called only registered application tools; it does not establish broad injection robustness.
+Prompt injection is covered by two recorded live discovery runs of the same scenario, not by the local test suites.
+Both runs observed the injected note, completed the task, and called only registered application tools; they do not establish broad injection robustness.
 Use `--scenario NAME` with discovery or replay.
 Handoff requires a headed browser, which is the default.
 

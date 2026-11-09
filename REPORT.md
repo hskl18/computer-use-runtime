@@ -3,7 +3,7 @@
 A Next.js console and CLI call a long-lived Fastify worker that owns Chromium, run state, and local SQLite storage.
 Discovery invokes a real model through controlled tools; the core replay module has no provider dependency.
 Playwright provides accessibility snapshots, masked screenshots, semantic targeting, and browser execution.
-Recorded runs used gpt-6-astra through Codex CLI 0.153.4 with ChatGPT authentication.
+Recorded runs used gpt-6-astra with ChatGPT authentication, through Codex CLI 0.153.4 on 2026-09-12 and 0.167.0 on 2026-11-09.
 The explicit Responses API adapter uses separate API credentials and has mocked tests only.
 [Source-linked diagrams](docs/architecture.md) describe the implemented boundaries.
 
@@ -24,7 +24,7 @@ Business results distinguish invalid input, missing members, and denied access.
 Application errors, ambiguous targets, policy violations, unresolved handoff, and checkpoint failures stop explicitly.
 Failure paths retain redacted observations and masked images when capture is possible.
 Raw typed outputs are checked locally against independent fixture expectations, returned temporarily to the caller, and masked in persistence.
-The two final discoveries each made nine action attempts: seven completed and two rejected before compilation.
+Each of the four recorded discoveries, two on 2026-09-12 and two on 2026-11-09, made nine action attempts: seven completed and two rejected before compilation.
 Discovery waits within the action timeout for a click to change frame URLs or accessibility snapshots, without repeating the click.
 This is a bounded progress heuristic, not proof of business effect; uncertain outcomes prompt observation or handoff, and the final checkpoint verifies task success.
 Their exact-revision CLI replays used different inputs, returned the expected outputs, and emitted zero model/provider events.
@@ -72,14 +72,14 @@ The local API and trusted operator model are unsuitable as production authentica
 
 **Clicks that changed nothing were compiled into capabilities.**
 Two of the three earlier eight-step revisions in `capabilities/revisions/` click the `Open member` table cell and then the `Open member` link.
-Discovery now rejects a click that leaves the page unchanged and tells the model so, and both final discoveries compiled seven steps without the cell click.
+Discovery now rejects a click that leaves the page unchanged and tells the model so, and all four recorded discoveries compiled seven steps without the cell click.
 The earlier revisions stay in place because revisions are immutable once written.
 
 **The no-op check itself misread slow pages.**
 It first compared the page signature once, immediately after the click, so an update that arrived asynchronously looked like a no-op.
 Commit `5f0536d` polls within the action timeout instead, never repeats the click, and reports an uncertain outcome as already executed so the model observes or requests handoff rather than retrying.
 Four regression tests in `packages/discovery/progress.test.ts` cover a delayed update, an unchanged page, cancellation, and a policy failure during the wait.
-The recorded discoveries predate this change and are not presented as validating it.
+The September discoveries predate this change; the 2026-11-09 re-runs used it and completed, which shows it does not break a normal discovery, not that it handles a slow page.
 
 **The model runtime inherited tools the runtime never registered.**
 A developer's own Codex home kept plugin MCP servers (`node_repl`, `cua_repl`, `codex_apps`) connected even with `-c mcp_servers={}` and `-c plugins={}`.

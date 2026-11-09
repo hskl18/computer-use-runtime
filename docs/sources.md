@@ -16,7 +16,7 @@ Generated protocol files are not vendored or manually edited here.
 | [Next.js backend-for-frontend guide](https://nextjs.org/docs/app/guides/backend-for-frontend) | Keep long-lived sessions outside request handlers |
 | [OpenAI Node SDK](https://github.com/openai/openai-node) | Explicit direct API adapter |
 
-The App Server integration targets an experimental protocol and currently enforces a 0.153.x CLI version check.
+The App Server integration targets an experimental protocol and accepts only Codex CLI 0.153.x and 0.167.x, the two lines with recorded end-to-end discoveries.
 A compatible version string is a prerequisite, not proof of end-to-end compatibility.
 
 ## Decisions verified against pinned source
