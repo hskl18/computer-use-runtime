@@ -7,6 +7,10 @@ A model discovers a workflow once in a UI that has no API; the runtime compiles 
 **Status: alpha, v0.2.0.** A local, single-user reference implementation against a synthetic back-office UI.
 It has not been deployed, and the capability format, CLI, and local API may change before 1.0.
 
+![Run inspector after a replay of a saved capability: seven completed steps, zero model responses, and a passed checkpoint with the balance and currency redacted.](evidence/console/console-replay.png)
+
+*The run inspector after replaying a saved capability against the synthetic UI, recorded 2026-09-12.*
+
 ## Why
 
 Back-office software often has no API, so the only way in is to drive the screen the way a human operator would.
