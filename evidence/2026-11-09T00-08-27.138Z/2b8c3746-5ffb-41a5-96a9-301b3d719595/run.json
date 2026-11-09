@@ -1,0 +1,23 @@
+{
+  "id": "2b8c3746-5ffb-41a5-96a9-301b3d719595",
+  "mode": "discovery",
+  "goal": "Look up the member and return the savings account balance and currency. Verify that the member ID matches the input.",
+  "status": "completed",
+  "backend": "codex",
+  "model": "gpt-6-astra",
+  "startedAt": "2026-11-09T00:06:48.629Z",
+  "updatedAt": "2026-11-09T00:07:21.675Z",
+  "step": 9,
+  "modelCalls": 8,
+  "scenario": "normal",
+  "variant": "base",
+  "capabilityId": "lookup-savings-balance",
+  "result": {
+    "status": "success",
+    "outputs": {
+      "balance": "[REDACTED]",
+      "currency": "[REDACTED]"
+    }
+  },
+  "durationMs": 33013
+}

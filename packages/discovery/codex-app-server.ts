@@ -254,10 +254,11 @@ export class CodexBackend implements DiscoveryBackend {
     const version = spawnSync(this.options.binary, ["--version"], {
       encoding: "utf8",
     }).stdout?.trim();
-    if (!/^codex-cli 0\.153\./.test(version ?? ""))
+    // The App Server protocol is experimental; accept only lines with a recorded end-to-end discovery.
+    if (!/^codex-cli 0\.(153|167)\./.test(version ?? ""))
       throw new RuntimeError(
         "CODEX_VERSION",
-        "This adapter targets Codex CLI 0.153.x. Set CODEX_BIN to a compatible binary.",
+        "This adapter targets Codex CLI 0.153.x or 0.167.x. Set CODEX_BIN to a compatible binary.",
       );
     const rpc = new Rpc(this.options.binary, this.options.cwd);
     let threadId = "";
