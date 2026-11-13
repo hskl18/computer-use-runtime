@@ -60,6 +60,17 @@ The console suite creates its own replay failure if historical failure evidence 
 The included real capability permits model-free evaluation after a fresh checkout; a new discovery requires compatible Codex and an existing ChatGPT login.
 The subscription path was verified in this environment; no live direct API call was made.
 
+## What the checks run
+
+`pnpm check` runs TypeScript, Biome, 39 core/provider tests, and the Next.js production build.
+`pnpm evaluate` runs 9 browser, 15 runtime, and 4 console tests.
+The runtime and console suites use the real discovered capability that ships in `capabilities/`.
+The runtime suite starts its own fixture on port 3211; the browser and console suites drive the worker's synthetic target over HTTP, so `pnpm dev` must be running for them.
+Model calls are confined to the explicit discovery commands.
+The exporter reads the local database without modifying it and exports persisted redacted records, referenced artifact revisions, available masked screenshots, and a file digest manifest.
+Generated manifests retain their initial `unreviewed` marker; [review notes](../evidence/review.md) record the separate automated and visual review without rewriting generated manifests.
+See [the evidence contract](../evidence/README.md).
+
 ## Release boundary
 
 Source and recorded evidence are public at [hskl18/computer-use-runtime](https://github.com/hskl18/computer-use-runtime).

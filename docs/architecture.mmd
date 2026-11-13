@@ -1,0 +1,15 @@
+flowchart TD
+  Console[Next.js console] -->|local HTTP| Worker[Fastify worker / Runtime]
+  CLI[CLI] -->|local HTTP| Worker
+  Worker -->|discovery only| Provider[Codex App Server or Responses API]
+  Provider -->|typed tool requests| Worker
+  Artifact[Capability JSON + SHA-256 revision] --> Replay[Deterministic replay]
+  Worker --> Replay
+  Replay -->|typed actions| Gate[Session ownership + policy + outcome guards]
+  Worker -->|discovery actions| Gate
+  Gate --> Surface[Playwright browser surface]
+  Surface --> Target[Synthetic legacy UI in iframe]
+  Worker -->|redacted events and results| SQLite[(SQLite)]
+  Worker -->|compile observed actions| Artifact
+  Operator[Human operator] -->|take / resume| Worker
+  Operator -->|same headed browser| Surface

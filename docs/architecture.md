@@ -4,7 +4,56 @@ The worker owns browser lifetime; a Next.js request never owns it.
 The model selects actions only during discovery.
 The replay module imports core contracts and validation without importing either provider.
 
+## Components
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="architecture-dark.svg">
+  <img alt="The Next.js console and the CLI call the Fastify worker over local HTTP. During discovery only, the worker talks to the Codex App Server or Responses API, which returns typed tool requests. The worker compiles observed actions into a capability JSON with a SHA-256 revision, which deterministic replay executes. Discovery and replay actions both pass session ownership, policy, and outcome guards before the Playwright browser surface drives the synthetic legacy UI in an iframe. The worker writes redacted events and results to SQLite, and a human operator can take and resume the run in the same headed browser." src="architecture-light.svg">
+</picture>
+
+The diagram's source is [`architecture.mmd`](architecture.mmd); update it when a boundary changes.
+
+| Path | Responsibility |
+| --- | --- |
+| `apps/web` | Run console, artifact inspection, handoff controls |
+| `apps/worker` | Long-lived orchestration, local API, process lifecycle |
+| `apps/sandbox` | Synthetic target and controllable failure states |
+| `packages/core` | Schemas, compiler, replay, policy, session state, storage |
+| `packages/browser` | Semantic targeting, browser network limits, observations |
+| `packages/discovery` | Model adapters and the controlled tool contract |
+| `policies/local-demo.json` | Route/action limits, outcome rules, recovery budgets |
+| `capabilities` | Actual discovery artifacts, created only after successful runs |
+| `evidence` | Actual discovery/replay logs, assertions, failure and handoff images |
+
 ## Discovery and recording
+
+```mermaid
+flowchart LR
+  Goal["Goal + target + typed inputs"] --> Loop
+
+  subgraph Discovery["Once, with the model"]
+    Loop["observe, decide, act"]
+    Loop --> Gate{"Allowed by policy<br/>and observed progress?"}
+    Gate -->|"no, and not recorded"| Loop
+    Gate -->|"yes, recorded"| Compile["complete:<br/>compile and validate"]
+  end
+
+  Compile --> Artifact[("Capability revision<br/>typed inputs and outputs<br/>targets, checkpoint, SHA-256")]
+
+  subgraph Production["Every time after, without a model"]
+    Artifact --> Steps["Execute the typed steps"]
+    Steps --> Result["Typed result"]
+  end
+
+  Steps -.->|cannot proceed safely| Operator["Operator owns the same browser"]
+  Operator -.->|control returned| Steps
+```
+
+A rejected action is not compiled.
+For clicks, discovery waits up to the action timeout for a change in frame URLs or accessibility snapshots, without clicking again.
+This is a progress heuristic: unrelated updates can change the signature, while some valid actions have no observable change.
+An uncertain click is reported as already executed, and the model is directed to observe or request handoff rather than retry blindly.
+The final checkpoint remains responsible for verifying task success.
 
 ```mermaid
 sequenceDiagram
