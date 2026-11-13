@@ -11,7 +11,8 @@ The replay module imports core contracts and validation without importing either
   <img alt="The Next.js console and the CLI call the Fastify worker over local HTTP. During discovery only, the worker talks to the Codex App Server or Responses API, which returns typed tool requests. The worker compiles observed actions into a capability JSON with a SHA-256 revision, which deterministic replay executes. Discovery and replay actions both pass session ownership, policy, and outcome guards before the Playwright browser surface drives the synthetic legacy UI in an iframe. The worker writes redacted events and results to SQLite, and a human operator can take and resume the run in the same headed browser." src="architecture-light.svg">
 </picture>
 
-The diagram's source is [`architecture.mmd`](architecture.mmd); update it when a boundary changes; the owner renders `architecture-light.svg` and `architecture-dark.svg` from it with a shared theme.
+The diagram's source is [`architecture.mmd`](architecture.mmd); update it when a boundary changes.
+The owner renders `architecture-light.svg` and `architecture-dark.svg` from it with a shared theme.
 
 | Path | Responsibility |
 | --- | --- |
