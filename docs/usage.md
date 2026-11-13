@@ -35,6 +35,10 @@ pnpm cli replay --revision 69e7bebf68e6755b40304d3e338c2a2c3e806d40883b27f501b3b
 pnpm cli replay --inputs '{"memberId":"M3003"}' --variant union
 ```
 
+`pnpm cli inspect` lists the stored capabilities.
+The first replay pins `69e7bebf…`, the revision that ships in `capabilities/`, not the one the `discover` command above publishes.
+Leave out `--revision`, as the second replay does, to replay the capability currently published under that ID.
+
 Discovery exposes only four application tools: `observe`, `act`, `request_handoff`, and `complete`.
 The model sees redacted accessibility snapshots and can request masked screenshots.
 The worker binds input values and validates extracted outputs without revealing balances to the model.
@@ -58,7 +62,7 @@ flowchart TD
   Match -->|business| Business["Business outcome returned to the caller<br/>MEMBER_NOT_FOUND, ACCESS_DENIED, INVALID_MEMBER_ID"]
   Match -->|retry| Retry["Recoverable: bounded frame reload<br/>within the recovery budget"]
   Match -->|handoff| Handoff["Escalate: pause and cede the live session"]
-  Match -->|failure| Fail["Hard failure: stop with code, step,<br/>expected, observed, and a masked screenshot"]
+  Match -->|failure| Fail["Hard failure: stop with a code and step,<br/>plus expected, observed, and a masked<br/>screenshot when they are available"]
   Retry --> Inspect
   Handoff --> Inspect
 ```
