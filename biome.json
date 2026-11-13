@@ -8,6 +8,7 @@
       "!!apps/web/.next",
       "!!evidence",
       "!!capabilities",
+      "!!docs/*.svg",
       "!!pnpm-lock.yaml"
     ]
   },
