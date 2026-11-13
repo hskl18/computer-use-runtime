@@ -37,10 +37,21 @@ Run IDs, assertions, and file digests are in the [evidence index](evidence/READM
 The two discoveries took 36 s and 41 s; each replay took under 1 s and emitted zero model or provider events.
 Each discovery's two rejected actions, an ambiguous table cell and a click that left the page unchanged, were not compiled.
 Re-run on 2026-11-09 (UTC) with the same model through Codex CLI 0.167.0, both discoveries again took 8 model responses and 9 attempted actions for 7 compiled steps, in 33 s and 36 s, and their three replays returned the expected outputs with zero model or provider events.
-CI runs 67 tests on every commit: 39 core/provider, 9 browser, 15 runtime, and 4 console.
+CI runs 67 tests on every commit; the [verification notes](docs/verification.md) list what each suite covers.
 Operator handoffs in the evidence were simulated by Playwright in a real headed browser, not performed by a person.
 
 The design decisions, and the failures found and fixed along the way, are in [REPORT.md](REPORT.md).
+
+## Architecture
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/architecture-dark.svg">
+  <img alt="The Next.js console and the CLI call the Fastify worker over local HTTP. During discovery only, the worker talks to the Codex App Server or Responses API, which returns typed tool requests. The worker compiles observed actions into a capability JSON with a SHA-256 revision, which deterministic replay executes. Discovery and replay actions both pass session ownership, policy, and outcome guards before the Playwright browser surface drives the synthetic legacy UI in an iframe. The worker writes redacted events and results to SQLite, and a human operator can take and resume the run in the same headed browser." src="docs/architecture-light.svg">
+</picture>
+
+The worker owns the browser, and the model takes part only in discovery, through four application tools: `observe`, `act`, `request_handoff`, and `complete`.
+Replay has no provider dependency, model fallback, or generated code, and every action, discovered or replayed, passes the same session, policy, and outcome checks.
+The [architecture notes](docs/architecture.md) trace boundaries and extension points to source files.
 
 ## Try it without a model
 
@@ -53,13 +64,20 @@ pnpm install --frozen-lockfile && pnpm exec playwright install chromium && pnpm 
 This replays the committed capability through real Chromium in 15 cases: changed inputs on both layouts, business outcomes, recovery, hard failures, and simulated handoffs.
 It starts its own fixture, needs no model or login, and opens headed Chromium windows for the four tests that pause for an operator.
 
-## Non-goals
+## Run the console
 
-- Production banking software: there are no real accounts, bank writes, or real authentication.
-- A model benchmark: the evidence is selected acceptance runs on one synthetic application family, not a success-rate study or a comparison between models.
-- Broad prompt-injection robustness: two live runs of one injection scenario are recorded, on 2026-09-12 and 2026-11-09.
-- Tenant isolation, distributed scheduling, remote operator streaming, and desktop or terminal control.
-- A hosted service: it runs locally and binds to 127.0.0.1.
+Requires Node.js 24 or later, pnpm 11, tmux, and Chromium installed by Playwright.
+A new discovery with the default `codex` backend also needs Codex CLI 0.153.x or 0.167.x with an existing ChatGPT login.
+
+```bash
+pnpm install --frozen-lockfile
+pnpm exec playwright install chromium
+pnpm dev
+pnpm cli doctor
+```
+
+The console runs at `http://127.0.0.1:3100`, and the worker and synthetic target at `http://127.0.0.1:3101`.
+The [usage guide](docs/usage.md) covers discovering and replaying a capability, the 12 fixture scenarios, operator handoff, and the model backends.
 
 ## What came out of it
 
@@ -78,202 +96,15 @@ It takes an architecture where the provider cannot be reached from the replay pa
 An inherited Codex configuration kept a JavaScript REPL server attached to the thread, which no config override could disable.
 Discovery now runs from an isolated Codex home, and the preflight refuses to spend a turn if any tool server is still attached.
 
-```mermaid
-flowchart LR
-  Goal["Goal + target + typed inputs"] --> Loop
+The [architecture notes](docs/architecture.md#discovery-and-recording) show the discovery loop and how a rejected action is handled.
 
-  subgraph Discovery["Once, with the model"]
-    Loop["observe, decide, act"]
-    Loop --> Gate{"Allowed by policy<br/>and observed progress?"}
-    Gate -->|"no, and not recorded"| Loop
-    Gate -->|"yes, recorded"| Compile["complete:<br/>compile and validate"]
-  end
+## Non-goals
 
-  Compile --> Artifact[("Capability revision<br/>typed inputs and outputs<br/>targets, checkpoint, SHA-256")]
-
-  subgraph Production["Every time after, without a model"]
-    Artifact --> Steps["Execute the typed steps"]
-    Steps --> Result["Typed result"]
-  end
-
-  Steps -.->|cannot proceed safely| Operator["Operator owns the same browser"]
-  Operator -.->|control returned| Steps
-```
-
-A rejected action is not compiled.
-For clicks, discovery waits up to the action timeout for a change in frame URLs or accessibility snapshots, without clicking again.
-This is a progress heuristic: unrelated updates can change the signature, while some valid actions have no observable change.
-An uncertain click is reported as already executed, and the model is directed to observe or request handoff rather than retry blindly.
-The final checkpoint remains responsible for verifying task success.
-
-## Start locally
-
-Requires Node.js 24 or later, pnpm 11, tmux, and Chromium installed by Playwright.
-The subscription adapter accepts Codex CLI 0.153.x and 0.167.x, the two lines with recorded discoveries, and needs an existing ChatGPT login.
-Codex CLI 0.153.4 and 0.167.0 with ChatGPT authentication and gpt-6-astra completed the recorded discovery runs.
-
-```bash
-pnpm install --frozen-lockfile
-pnpm exec playwright install chromium
-pnpm dev
-pnpm cli doctor
-```
-
-`pnpm cli doctor` reports Node.js, the Codex CLI and its login, whether Playwright's Chromium build is installed, and worker health.
-
-The console runs at `http://127.0.0.1:3100`.
-The worker and synthetic target run at `http://127.0.0.1:3101`.
-The default launcher uses these fixed ports.
-See [local services](docs/dev-local.md) for status, logs, restart, and shutdown commands.
-
-## Discover, then replay
-
-These commands operate the local fixture through Chromium.
-The goal and target are explicit discovery inputs; the target must satisfy policy.
-
-```bash
-pnpm cli discover --goal "Look up the member and return the savings account balance and currency. Verify the member ID." --target /sandbox/ --inputs '{"memberId":"M1001"}'
-pnpm cli inspect
-pnpm cli replay --revision 69e7bebf68e6755b40304d3e338c2a2c3e806d40883b27f501b3bc6c3ba5941f --inputs '{"memberId":"M2002"}'
-pnpm cli replay --inputs '{"memberId":"M3003"}' --variant union
-```
-
-Discovery exposes only four application tools: `observe`, `act`, `request_handoff`, and `complete`.
-The model sees redacted accessibility snapshots and can request masked screenshots.
-The worker binds input values and validates extracted outputs without revealing balances to the model.
-`complete` compiles successfully executed actions and requires a final input-bound equality checkpoint.
-An artifact is published locally only after the discovery backend returns successfully.
-
-Replay loads that artifact and executes its typed steps.
-It has no provider dependency, model fallback, generated JavaScript, or selector repair by a model.
-Successful raw outputs are available to the local CLI for five minutes; persisted results remain redacted.
-Do not redirect raw CLI output into public evidence.
-
-## Components and boundaries
-
-```mermaid
-flowchart TD
-  Console[Next.js console] -->|local HTTP| Worker[Fastify worker / Runtime]
-  CLI[CLI] -->|local HTTP| Worker
-  Worker -->|discovery only| Provider[Codex App Server or Responses API]
-  Provider -->|typed tool requests| Worker
-  Artifact[Capability JSON + SHA-256 revision] --> Replay[Deterministic replay]
-  Worker --> Replay
-  Replay -->|typed actions| Gate[Session ownership + policy + outcome guards]
-  Worker -->|discovery actions| Gate
-  Gate --> Surface[Playwright browser surface]
-  Surface --> Target[Synthetic legacy UI in iframe]
-  Worker -->|redacted events and results| SQLite[(SQLite)]
-  Worker -->|compile observed actions| Artifact
-  Operator[Human operator] -->|take / resume| Worker
-  Operator -->|same headed browser| Surface
-```
-
-| Path | Responsibility |
-| --- | --- |
-| `apps/web` | Run console, artifact inspection, handoff controls |
-| `apps/worker` | Long-lived orchestration, local API, process lifecycle |
-| `apps/sandbox` | Synthetic target and controllable failure states |
-| `packages/core` | Schemas, compiler, replay, policy, session state, storage |
-| `packages/browser` | Semantic targeting, browser network limits, observations |
-| `packages/discovery` | Model adapters and the controlled tool contract |
-| `policies/local-demo.json` | Route/action limits, outcome rules, recovery budgets |
-| `capabilities` | Actual discovery artifacts, created only after successful runs |
-| `evidence` | Actual discovery/replay logs, assertions, failure and handoff images |
-
-The [architecture notes](docs/architecture.md) trace boundaries and extension points to source files.
-The design write-up, including the trade-offs and what was deliberately left out, is in [REPORT.md](REPORT.md).
-
-## Outcomes and human control
-
-Replay inspects the page before and after every step and classifies what it finds.
-The classes are deliberately distinct: a missing member is an answer, not a crash.
-
-```mermaid
-flowchart TD
-  Inspect["Inspect the page before and after each step"] --> Match{"Matches a declared outcome rule?"}
-  Match -->|none| Continue["Continue to the next step"]
-  Match -->|business| Business["Business outcome returned to the caller<br/>MEMBER_NOT_FOUND, ACCESS_DENIED, INVALID_MEMBER_ID"]
-  Match -->|retry| Retry["Recoverable: bounded frame reload<br/>within the recovery budget"]
-  Match -->|handoff| Handoff["Escalate: pause and cede the live session"]
-  Match -->|failure| Fail["Hard failure: stop with code, step,<br/>expected, observed, and a masked screenshot"]
-  Retry --> Inspect
-  Handoff --> Inspect
-```
-
-| Scenario | Runtime behavior |
-| --- | --- |
-| `normal` | Return savings balance and currency after identity verification |
-| `validation-error` | Return `INVALID_MEMBER_ID` business outcome |
-| `not-found` | Return `MEMBER_NOT_FOUND` business outcome |
-| `permission-denied` | Return `ACCESS_DENIED` business outcome |
-| `slow` | Use bounded locator/navigation waiting |
-| `transient` | Reload the blocked page within the recovery budget |
-| `session-expired` | Pause for an operator in the existing browser |
-| `unexpected-dialog` | Pause for an operator to dismiss the HTML dialog |
-| `app-error` | Stop with `APP_ERROR` and capture failure evidence |
-| `duplicate-control` | Refuse ambiguous targeting |
-| `risky` | Block attempts to activate the transfer control |
-| `prompt-injection` | Treat the imported note as untrusted content |
-
-The fixture defines these 12 scenarios; the local suites exercise targeting, business outcomes, recovery, failures, and simulated operator handoffs.
-Prompt injection is covered by two recorded live discovery runs of the same scenario, not by the local test suites.
-Both runs observed the injected note, completed the task, and called only registered application tools; they do not establish broad injection robustness.
-Use `--scenario NAME` with discovery or replay.
-Handoff requires a headed browser, which is the default.
-
-```bash
-pnpm cli replay --scenario session-expired --inputs '{"memberId":"M2002"}'
-# In another terminal, use the run ID printed above:
-pnpm cli take --id RUN_ID
-# In the existing Chromium window, click Resume session.
-pnpm cli resume --id RUN_ID
-```
-
-The session ID remains stable across pause, take, and resume.
-In the recorded evidence the operator's clicks were simulated by Playwright in a real headed browser, not performed by a person, and are labeled that way throughout.
-Trusted page click/change/submit events during human ownership are recorded with input values masked.
-The runtime inspects the restored state before continuing.
-The synthetic session restoration involves no real authentication or account access.
-
-## Authentication and scope
-
-The default `codex` backend uses the installed Codex CLI's ChatGPT authentication.
-The child process removes common API-key overrides, requires a ChatGPT account, disables native environments, and checks for inherited MCP servers before starting a model turn.
-An isolated runtime-owned `CODEX_HOME` contains minimal configuration and an authentication symlink; credentials are not copied into the repository.
-Recorded preflight reports no inherited MCP servers or native environment access.
-Astra requires Codex's sandboxed JavaScript tool host to dispatch the four application tools.
-That upstream host can expose orchestration and clock/question helpers; the model has no general shell, filesystem, network, or browser-evaluation tool in this integration.
-Model catalog presence is not evidence of successful inference or an entitlement guarantee.
-
-The explicit `direct-api` backend requires `OPENAI_API_KEY` and uses separate API billing.
-It uses the same controlled tools and does not silently replace the subscription backend.
-The subscription path is what the recorded runs actually used; the direct API path exists so the same tools can run on metered API credentials.
-The direct API adapter has mocked protocol tests; it has not made a live API call.
-
-The UI target is synthetic and the recorded model discovery is real.
-
-## Verification and evidence
-
-```bash
-pnpm check
-pnpm evaluate
-# Optional new live discovery using the subscription:
-pnpm verify:discovery
-# Independently verify a recorded revision through the actual CLI:
-pnpm exec tsx scripts/verify-replay.ts --revision 69e7bebf68e6755b40304d3e338c2a2c3e806d40883b27f501b3bc6c3ba5941f
-# Export selected local runs:
-pnpm evidence:export DISCOVERY_RUN_ID REPLAY_RUN_ID
-```
-
-`pnpm check` runs TypeScript, Biome, 39 core/provider tests, and the Next.js production build.
-`pnpm evaluate` runs 9 browser, 15 runtime, and 4 console tests.
-The runtime and console suites use the real discovered capability that ships in `capabilities/`.
-The runtime suite starts its own fixture on port 3211; the browser and console suites drive the worker's synthetic target over HTTP, so `pnpm dev` must be running for them.
-Model calls are confined to the explicit discovery commands.
-The exporter reads the local database without modifying it and exports persisted redacted records, referenced artifact revisions, available masked screenshots, and a file digest manifest.
-Generated manifests retain their initial `unreviewed` marker; [review notes](evidence/review.md) record the separate automated and visual review without rewriting generated manifests.
-See [the evidence contract](evidence/README.md) and [acceptance checklist](docs/verification.md).
+- Production banking software: there are no real accounts, bank writes, or real authentication.
+- A model benchmark: the evidence is selected acceptance runs on one synthetic application family, not a success-rate study or a comparison between models.
+- Broad prompt-injection robustness: two live runs of one injection scenario are recorded, on 2026-09-12 and 2026-11-09.
+- Tenant isolation, distributed scheduling, remote operator streaming, and desktop or terminal control.
+- A hosted service: it runs locally and binds to 127.0.0.1.
 
 ## Open source
 

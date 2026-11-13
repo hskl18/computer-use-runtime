@@ -53,12 +53,24 @@ pnpm exec tsx scripts/verify-replay.ts --revision 69e7bebf68e6755b40304d3e338c2a
 # Optional new live subscription calls:
 pnpm verify:discovery
 pnpm verify:discovery --scenario prompt-injection --member M2002
+# Export selected local runs:
+pnpm evidence:export DISCOVERY_RUN_ID REPLAY_RUN_ID
 ```
 
 The runtime suite starts its own fixture on port 3211. The browser and console suites need the local services on 3101 and 3100, so start `pnpm dev` before `pnpm evaluate`.
 The console suite creates its own replay failure if historical failure evidence is absent.
 The included real capability permits model-free evaluation after a fresh checkout; a new discovery requires compatible Codex and an existing ChatGPT login.
 The subscription path was verified in this environment; no live direct API call was made.
+
+## What the checks run
+
+`pnpm check` runs TypeScript, Biome, 39 core/provider tests, and the Next.js production build.
+`pnpm evaluate` runs 9 browser, 15 runtime, and 4 console tests.
+The runtime and console suites use the real discovered capability that ships in `capabilities/`.
+Model calls are confined to the explicit discovery commands.
+The exporter reads the local database without modifying it and exports persisted redacted records, referenced artifact revisions, available masked screenshots, and a file digest manifest.
+Generated manifests retain their initial `unreviewed` marker; [review notes](../evidence/review.md) record the separate automated and visual review without rewriting generated manifests.
+See [the evidence contract](../evidence/README.md).
 
 ## Release boundary
 
