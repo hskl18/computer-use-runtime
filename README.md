@@ -15,7 +15,10 @@ It has not been deployed, and the capability format, CLI, and local API may chan
 
 Back-office software often has no API, so the only way in is to drive the screen the way a human operator would.
 Putting a model in that loop on every run makes each run slow, metered, and different from the last.
-Here the model explores once through four controlled tools, the run that succeeds is compiled into a typed, versioned capability with a SHA-256 revision, and every later run replays it deterministically.
+This project tests a narrower idea: the model explores once, and every later run replays the compiled result deterministically.
+
+A model gets a goal and a live interface and explores it through four controlled tools.
+The run that succeeds is compiled into a typed, versioned capability with a SHA-256 revision.
 The subject application is a synthetic banking workspace built to be awkward in the ways legacy software is awkward: an iframe, table-based layouts, no test IDs, and injectable runtime failures.
 
 ## Result
@@ -46,9 +49,9 @@ The design decisions, and the failures found and fixed along the way, are in [RE
   <img alt="The Next.js console and the CLI call the Fastify worker over local HTTP. During discovery only, the worker talks to the Codex App Server or Responses API, which returns typed tool requests. The worker compiles observed actions into a capability JSON with a SHA-256 revision, which deterministic replay executes. Discovery and replay actions both pass session ownership, policy, and outcome guards before the Playwright browser surface drives the synthetic legacy UI in an iframe. The worker writes redacted events and results to SQLite, and a human operator can take and resume the run in the same headed browser." src="docs/architecture-light.svg">
 </picture>
 
-The worker owns the browser, and the model takes part only in discovery, through four tools: `observe`, `act`, `request_handoff`, and `complete`.
+The worker owns the browser, and the model takes part only in discovery, through four application tools: `observe`, `act`, `request_handoff`, and `complete`.
 Replay has no provider dependency, model fallback, or generated code, and every action, discovered or replayed, passes the same session, policy, and outcome checks.
-The [architecture notes](docs/architecture.md) trace each boundary to its source files.
+The [architecture notes](docs/architecture.md) trace boundaries and extension points to source files.
 
 ## Try it without a model
 
@@ -64,7 +67,7 @@ It starts its own fixture, needs no model or login, and opens headed Chromium wi
 ## Run the console
 
 Requires Node.js 24 or later, pnpm 11, tmux, and Chromium installed by Playwright.
-A new discovery also needs Codex CLI 0.153.x or 0.167.x with an existing ChatGPT login.
+A new discovery with the default `codex` backend also needs Codex CLI 0.153.x or 0.167.x with an existing ChatGPT login.
 
 ```bash
 pnpm install --frozen-lockfile

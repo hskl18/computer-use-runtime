@@ -35,9 +35,9 @@ pnpm cli replay --revision 69e7bebf68e6755b40304d3e338c2a2c3e806d40883b27f501b3b
 pnpm cli replay --inputs '{"memberId":"M3003"}' --variant union
 ```
 
-`pnpm cli inspect` lists the stored capabilities.
-The first replay pins `69e7bebf…`, the revision that ships in `capabilities/`, not the one the `discover` command above publishes.
-Leave out `--revision`, as the second replay does, to replay the capability currently published under that ID.
+`pnpm cli inspect` prints the latest revision of each capability ID.
+The first replay pins `69e7bebf…`, the 2026-09-12 normal-discovery revision kept in `capabilities/revisions/`.
+Leave out `--revision`, as the second replay does, to replay the latest revision of `lookup-savings-balance`: `d2395f10…` on a fresh checkout, or the one `discover` just published.
 
 Discovery exposes only four application tools: `observe`, `act`, `request_handoff`, and `complete`.
 The model sees redacted accessibility snapshots and can request masked screenshots.
